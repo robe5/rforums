@@ -1,0 +1,21 @@
+<h1><%= @user.name %></h1>
+<%- form_for @user do |form| -%>
+  <%#= form.error_messages %>
+  <% if flash[:error] %>
+    <%= flash[:error] %>
+  <% end %>
+  <ul id="register">
+    <li>
+      <%= form.label :email %>
+      <%= form.text_field :email %>
+    </li>
+    <li>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </li>
+    <li class="submit">
+      <%= submit_tag 'Save', :disable_with => 'Signing you up...' %>
+      or <%= link_to 'Cancel', root_path %>
+    </li>
+  </ul>
+<%- end -%>

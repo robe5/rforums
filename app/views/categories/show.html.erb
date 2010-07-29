@@ -1,0 +1,49 @@
+<% content_for :page_title do %>
+  <%= @category.name %>
+<% end %>
+
+<style type="text/css" media="screen">
+  .data thead{
+    background: #666;
+    color: #ccc;
+  }
+  .data th{
+    padding: 5px 10px;
+  }
+  .data th, .data td{
+    text-align: left;
+  }
+  .data .center{
+    text-align:center;
+  }
+  .data td{
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+  }
+</style>
+
+<%= link_to "Create new topic", new_category_topic_path(@category) %>
+
+<table class="data" width="100%" cellspacing="0" cellpadding="0">
+  <thead>
+    <th width="70%">Title</th>
+    <th width="10%" class="center">Replies</th>
+    <th width="20%">Last Post</th>
+  </thead>
+  <tbody>  
+    <% @category.topics.each do |topic| %>
+      <tr class="topic-<%= topic.level %>">
+        <td>
+          <%= link_to topic.title, [@category, topic] %><br />
+          <%= topic.user_name %>
+        </td>
+        <td class="center"><%= topic.post_count %></td>
+        <td>
+          <!-- enlace al ultimo post o al topic si no tiene posts -->
+          <%= distance_of_time_in_words_to_now topic.updated_at %><br />
+          by <%= topic.user_name %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

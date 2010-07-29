@@ -1,0 +1,23 @@
+<li id="category-<%= category.id %>">
+  <div class="category-name">
+    <%= link_to category do %>
+      <%= category.name %>
+      <span><%= category.description %></span>
+    <% end %>
+    <% if admin? %>
+    <div class="actions">
+      <%= link_to_function "Edit", "$('#category-#{category.id} .category-update-form').show().find('input[type=text]').first().focus();" %> |
+      <%= link_to "Destroy", category, :method => :delete, :remote => true %>
+    </div>
+    <% end %>
+  </div>
+
+  <% if admin? %>
+  <div class="category-update-form" style="display:none">
+    <%= form_for category, :remote => true do |form| %>
+      <%= render :partial => 'categories/form', :locals => {:form => form} %>
+      <%= form.submit "Update" %> or <%= link_to_function "Cancel", "$(this).parents('.category-update-form').hide();" %>
+    <% end %>
+  </div>
+  <% end %>
+</li>
