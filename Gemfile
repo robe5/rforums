@@ -27,3 +27,5 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # group :test do
 #   gem 'webrat'
 # end
+
+gem 'ruby-debug19', :require => 'ruby-debug'

@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Forums</title>
-  <%= stylesheet_link_tag 'application' %>
-  <%= javascript_include_tag 'jquery-1.4.2.min.js', 'rails.jquery.js' %>
+  <%= stylesheet_link_tag 'application', 'buttons' %>
+  <%= javascript_include_tag 'jquery-1.4.2.min.js', 'rails.jquery.js', 'flasher.js' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -14,7 +14,7 @@
         <% if signed_in? %>
           Logged in as <%= link_to current_user.name, current_user %> | <%= link_to "Logout", logout_path %>
         <% else %>
-          <%= link_to 'register', new_user_path %> <%= link_to 'login', users_path %>
+          <%= link_to 'register', new_user_path %> | <%= link_to 'login', users_path %>
         <% end %>
       </div>
     </div>
@@ -29,5 +29,7 @@
     <div id="footer">
     </div>
   </div>
+  
+  <%= render :partial => 'shared/notices' %>
 </body>
 </html>

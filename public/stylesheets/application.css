@@ -34,6 +34,10 @@ h1,h2,h3,h4,h5,h6{
 	right: 0px;
 }
 
+#footer{
+	margin-bottom: 100px;
+}
+
 .clear{
 	clear:both;
 }

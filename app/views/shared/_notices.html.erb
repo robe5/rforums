@@ -1,0 +1,34 @@
+<style type="text/css" media="screen">
+  #flash_notice{
+    display:block;
+    margin: 0 auto;
+    position:fixed;bottom:0;left:0;right:0;
+  }
+  #flash_notice .flashmessage{
+    padding:20px;
+    border-top:2px solid #000;
+    text-align:center;
+    font-size: 14px;
+    color: #000;
+  }
+  #flasherrors.flashmessage{
+    border-color: #d00;
+    background-color: #f5a5a5;
+  }
+  #flashnotice.flashmessage{
+    border-color: #0d0;
+    background-color: #a5f5a5;
+  }
+</style>
+
+<div id="flash_notice">
+  <div id="flash_notice_wrapper">
+    <div id="flasherrors" class="flashmessage" style="display:none"></div>
+    <div id="flashnotice" class="flashmessage" style="display:none"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  <% if flash[:success] %>Flasher.notice("<%= flash[:success] %>.");<% end %>
+  <% if flash[:error] %>Flasher.error("<%= flash[:error] %>.");<% end %>
+</script>

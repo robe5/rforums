@@ -1,5 +1,6 @@
 <% if @category.errors.empty? %>
   $('#category-<%= @category.id %>').replaceWith('<%= escape_javascript(render @category) %>');
+  Flasher.notice('<%= flash[:success] %>');
 <% else %>
-  alert("<%= @category.errors.full_messages.to_sentence %>");
+  Flasher.notice('<%= flash[:error] %>');
 <% end %>

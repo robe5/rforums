@@ -22,7 +22,9 @@
   }
 </style>
 
-<%= link_to "Create new topic", new_category_topic_path(@category) %>
+<div class="" style="margin: 10px 0">
+  <%= link_to "Create new topic", new_category_topic_path(@category), :class => 'button orange' %>
+</div>
 
 <table class="data" width="100%" cellspacing="0" cellpadding="0">
   <thead>
@@ -31,7 +33,7 @@
     <th width="20%">Last Post</th>
   </thead>
   <tbody>  
-    <% @category.topics.each do |topic| %>
+    <% @topics.each do |topic| %>
       <tr class="topic-<%= topic.level %>">
         <td>
           <%= link_to topic.title, [@category, topic] %><br />
@@ -41,7 +43,7 @@
         <td>
           <!-- enlace al ultimo post o al topic si no tiene posts -->
           <%= distance_of_time_in_words_to_now topic.updated_at %><br />
-          by <%= topic.user_name %>
+          by <%= topic.last_user_name %>
         </td>
       </tr>
     <% end %>

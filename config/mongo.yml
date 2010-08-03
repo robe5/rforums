@@ -1,0 +1,17 @@
+development: 
+  database: forums
+  host: localhost
+  port: 27017
+    
+test:
+  database: forums_text
+  host: localhost
+  port: 27088
+
+production:
+  database: forums
+  host: flame.mongohq.com
+  port: 27088
+  authentication: true
+  user: admin
+  password: af7mip9vet

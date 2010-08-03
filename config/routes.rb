@@ -15,7 +15,7 @@ Forums::Application.routes.draw do |map|
   resources :forums
   resources :categories do
     resources :topics do
-      resources :posts, :shallow => true
+      resources :posts
     end
   end
   resources :users

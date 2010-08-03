@@ -1,38 +1,31 @@
-class Topic
-  include MongoMapper::Document
+class Topic < Item
   key :title, String, :required => true
-  key :text, String, :required => true
-  timestamps!
   
   # cached values
   key :post_count,  Integer, :default => 0
-  key :user_name, String
   
   # Relationships
-  belongs_to :user
   belongs_to :category
   many :posts
+        
+  # TODO: Cachear esto
+  def last_user_name
+    if posts.size > 0
+      posts.last.user_name
+    else
+      user_name
+    end
+  end
   
-  # Validations
-  validates_presence_of :user_id
-  
-  # Callbacks
-  before_create :cache_user_name
-    
   def level
     0
   end
 
-  def increment_post
-    self.increment({:post_count => 1})
+  def increment(n = 1)
+    return false unless n.is_a? Numeric
+    Topic.collection.update({:_id => self.id},
+      { "$inc" => {:post_count => n}, 
+        "$set" => {:updated_at => Time.now}
+      })
   end
-  
-  def decrement_post
-    self.decrement({:post_count => 1})
-  end
-  
-  private
-  def cache_user_name
-    self.user_name = user.name
-  end  
 end

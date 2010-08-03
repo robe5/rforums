@@ -42,7 +42,7 @@
   }
   .post .footer{
     padding-top: 10px;
-    margin-top: 30px;
+    margin-top: 20px;
     border-top: 1px dashed #ccc;
     margin-bottom: 40px;
     color: #ccc;
@@ -61,7 +61,7 @@
     <%= distance_of_time_in_words_to_now @topic.created_at %>
   </div>
   <div class="author">
-    <div class="gravatar"></div>
+    <div class="gravatar"><%= image_tag gravatar(@topic.user.email, 40) %></div>
     <div class="user">
         <%= link_to @topic.user_name, user_path(@topic.user_id) %><br />
         <span class="user-role">member</span>
@@ -84,22 +84,22 @@
   </div>
 </div>
 
-<% @topic.posts.each do |post| %>
-  <div id="topic-<%= @topic.id %>" class="topic-post">
+<% @posts.each do |post| %>
+  <div id="post-<%= post.id %>" class="topic-post">
     <div class="created_at">
       <%= distance_of_time_in_words_to_now post.created_at %>
     </div>
     <div class="author">
-      <div class="gravatar"></div>
+      <div class="gravatar"><%= image_tag gravatar(post.user.email, 40) %></div>
       <div class="user">
           <%= link_to post.user_name, users_path(post.user_id) %><br />
           <span class="user-role">member</span>
       </div>
       <div class="actions">
         <% if admin? %>
-          <%= link_to 'Delete', post, :method => :delete, :"data-confirm" => "Are you sure?" %> | 
+          <%= link_to 'Delete', [@category, @topic, post], :method => :delete, :"data-confirm" => "Are you sure?" %> | 
         <% end %>
-        <%= link_to 'Reply', :anchor => 'new-post' %>
+        <%= link_to 'Reply', :anchor => 'reply' %>
       </div>
     </div>
     <div class="post">
@@ -115,8 +115,8 @@
 
 <div id="reply">
   <h3>Your reply</h3>
-  <%= form_for [@topic, Post.new] do |form| %>
+  <%= form_for [@category, @topic, Post.new] do |form| %>
     <%= form.text_area :text %><br />
-    <%= form.submit 'Submit' %>
+    <%= form.submit 'Submit', :class => "button orange" %>
   <% end %>
 </div>

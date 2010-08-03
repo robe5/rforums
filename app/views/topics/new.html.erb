@@ -1,6 +1,21 @@
-<%= form_for [@category, @topic] do |form| %>
-<%= form.text_field :title %><br />
-<%= form.text_area :text %>
-<%= form.submit 'Create' %>
-
-<% end %>
+<%- form_for [@category, @topic] do |form| -%>
+  <%#= form.error_messages %>
+  <% if flash[:error] %>
+    <%= flash[:error] %>
+  <% end %>
+  <ul id="new-topic">
+    <li>
+      <%= form.label :title %>
+      <%= form.text_field :title, :class => "text" %>
+    </li>
+    <li>
+      <%= form.label :text %>
+      <%= form.text_area :text, :class => "text" %>
+    </li>
+    <li class="submit">
+      <%= submit_tag 'Create', :disable_with => 'Creating topic...' %>
+      or <%= link_to 'cancel', categories_path %>
+    </li>
+  </ul>
+<%- end -%>
+</div>

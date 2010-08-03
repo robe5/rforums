@@ -30,7 +30,7 @@ class User
   validates_length_of :password, :minimum => 6, :if => PasswordRequired, :allow_nil => true
   
   before_create :create_admin
-  after_update :update_posts_cache
+  after_update :update_items_cache
   
   def authenticated?(secret)
     password == secret ? true : false
@@ -72,7 +72,7 @@ class User
     self.admin = true if User.count == 0
   end
   
-  def update_posts_cache
-    
+  def update_items_cache
+    Item.collection.update({:user_id => self.id}, "$set" => {"user_name" => self.name})
   end
 end
