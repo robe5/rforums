@@ -9,6 +9,17 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
+
+  def create
+    @user = User.new(params[:user])
+    if @user.save
+      self.current_user = @user
+      redirect_to root_path
+    else
+      flash[:error] = @user.errors.full_messages.to_sentence
+      render 'new'
+    end
+  end
   
   def update
     @user = User.find(params[:id])
@@ -18,16 +29,5 @@ class UsersController < ApplicationController
       flash[:error] = @user.errors.full_messages.to_sentence
     end
     redirect_to root_path
-  end
-  
-  def create
-    @user = User.new(params[:user])
-    if @user.save
-      self.current_user = @user
-      redirect_to root_path
-    else
-      flash[:error] = @user.errors.full_messages
-      render 'new', :layout => 'application'
-    end
   end
 end

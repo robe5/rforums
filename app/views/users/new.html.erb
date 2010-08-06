@@ -1,9 +1,7 @@
 <h1 class="page_title">Register a new user</h1>
 <%- form_for @user do |form| -%>
-  <%#= form.error_messages %>
-  <% if flash[:error] %>
-    <%= flash[:error] %>
-  <% end %>
+  <%= render "shared/error_messages", :target => @user %>
+  
   <ul id="register">
     <li>
       <%= form.label :email %>

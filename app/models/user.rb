@@ -23,6 +23,7 @@ class User
   
   validates_length_of :email, :within => 6..100, :allow_blank => true
   validates_format_of :email, :with => RegEmailOk, :allow_blank => true
+  validates_uniqueness_of :email
   
   PasswordRequired = Proc.new { |u| u.password_required? }
   validates_presence_of :password, :if => PasswordRequired

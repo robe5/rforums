@@ -61,8 +61,12 @@ module Authentication
     #
     #   skip_before_filter :sign_in_required
     #
-    def authenticate
+    def sign_in_required
       authorized? || access_denied
+    end
+    
+    def admin_required
+      admin? || access_denied
     end
 
     # Redirect as appropriate when an access request fails.

@@ -1,8 +1,5 @@
 <%- form_for [@category, @topic] do |form| -%>
-  <%#= form.error_messages %>
-  <% if flash[:error] %>
-    <%= flash[:error] %>
-  <% end %>
+  <%= render :partial => 'shared/error_messages' %>
   <ul id="new-topic">
     <li>
       <%= form.label :title %>

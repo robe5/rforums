@@ -10,8 +10,12 @@
 
   <div id="category-new-form" style="display:none">
     <%= form_for Category.new, :remote => true do |form| %>
-      <%= render :partial => 'categories/form', :locals => {:form => form} %>
-      <%= form.submit "Create" %> or <%= link_to_function "Cancel", "$('#category-new-form').hide().find('input[type=text]').attr('value','');" %>
+      <ul>
+        <%= render :partial => 'categories/form', :locals => {:form => form} %>
+        <li>
+          <%= form.submit "Create" %> or <%= link_to_function "Cancel", "$('#category-new-form').hide().find('input[type=text]').attr('value','');" %>
+        </li>
+      </ul>
     <% end %> 
   </div>
 </div>

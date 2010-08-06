@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
   before_filter :find_category
-  before_filter :authorized?, :only => [:destroy]
+  before_filter :sign_in_required, :only => [:new, :create, :destroy]
+  before_filter :admin_required, :only => :destroy
   
   def index
     redirect_to @category
