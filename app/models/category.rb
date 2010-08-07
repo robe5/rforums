@@ -8,5 +8,5 @@ class Category
   
   # Relationships
   belongs_to :user
-  many :topics
+  many :topics  
 end

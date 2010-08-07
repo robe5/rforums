@@ -3,6 +3,9 @@ class Post < Item
   # Relationships
   belongs_to :topic
   
+  # Validations
+  validates_presence_of :topic_id
+  
   # Callbacks
   after_create :increment
   after_destroy :decrement

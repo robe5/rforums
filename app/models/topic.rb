@@ -7,14 +7,12 @@ class Topic < Item
   # Relationships
   belongs_to :category
   many :posts
-        
-  # TODO: Cachear esto
+
+  # Validations
+  validates_presence_of :category_id
+
   def last_user_name
-    if posts.size > 0
-      posts.last.user_name
-    else
-      user_name
-    end
+    @last_user_name ||= (posts.size > 0 ? posts.last.user_name : user_name)
   end
   
   def level

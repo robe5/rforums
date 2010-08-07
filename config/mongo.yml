@@ -4,9 +4,9 @@ development:
   port: 27017
     
 test:
-  database: forums_text
+  database: forums_test
   host: localhost
-  port: 27088
+  port: 27017
 
 production:
   database: forums
