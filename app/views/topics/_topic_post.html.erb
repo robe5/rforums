@@ -1,0 +1,29 @@
+<div id="post-<%= topic_post.id %>" class="topic-post">
+  <div class="created_at">
+    <%= distance_of_time_in_words_to_now topic_post.created_at %>
+  </div>
+  <div class="author">
+    <div class="gravatar"><%= image_tag gravatar(topic_post.user.email, 40) %></div>
+    <div class="user">
+        <%= link_to topic_post.user_name, users_path(topic_post.user_id) %><br />
+        <span class="user-role">member</span>
+    </div>
+    <div class="actions">
+      <% if admin? %>
+        <%= link_to 'Delete', item_path(topic_post), :method => :delete, :"data-confirm" => "Are you sure?" %> | 
+      <% end %>
+      <%= link_to 'Reply', :anchor => 'reply' %>
+    </div>
+  </div>
+  <div class="topic-post-content">
+    <% if topic_post.respond_to?(:title) %>
+    <h2><%= @topic.title %></h2>
+    <% end %>
+    <div class="topic-post-body">
+      <%= topic_post.text %>
+    </div>
+    <div class="topic-post-footer">
+      <%= @topic.user_name %>
+    </div>
+  </div>
+</div>

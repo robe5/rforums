@@ -5,14 +5,16 @@
 <% if admin? %>
 <div id="forum-admin">
   <div class="actions">
-    <%= link_to_function "Create category", "$('#category-new-form').show().find('input[type=text]').first().focus();$(this).hide()", :class => "awesome small orange" %>
+    <%= link_to "Create category", "#", :id => "new-category", :class => "awesome small orange" %>
   </div>
   <div id="category-new-form" style="display:none">
     <%= form_for Category.new, :remote => true do |form| %>
       <ul>
         <%= render :partial => 'categories/form', :locals => {:form => form} %>
         <li>
-          <%= form.submit "Create", :class => "awesome small black" %> or <%= link_to_function "Cancel", "$('#category-new-form').hide().find('input[type=text]').attr('value','');" %>
+          <%= form.submit "Create", :class => "awesome small black" %>
+          or
+          <%= link_to "Cancel", "#", :id => "cancel-new-category" %>
         </li>
       </ul>
     <% end %> 

@@ -6,7 +6,7 @@
     <% end %>
     <% if admin? %>
     <div class="actions" style="display:none">
-      <%= link_to_function "Edit", "$('#category-#{category.id} .category-update-form').show().find('input[type=text]').first().focus();" %> |
+      <%= link_to "Edit", "#", :class => "action-edit", :'data-category' => "#{category.id}" %> |
       <%= link_to "Destroy", category, :method => :delete, :remote => true %>
     </div>
     <% end %>
@@ -16,7 +16,9 @@
   <div class="category-update-form" style="display:none">
     <%= form_for category, :remote => true do |form| %>
       <%= render :partial => 'categories/form', :locals => {:form => form} %>
-      <%= form.submit "Update", :class => "awesome small black" %> or <%= link_to_function "Cancel", "$(this).parents('.category-update-form').hide();" %>
+      <%= form.submit "Update", :class => "awesome small black" %> 
+      or 
+      <%= link_to "Cancel", "#", :class => "action-cancel", :'data-category' => "#{category.id}" %>
     <% end %>
   </div>
   <% end %>

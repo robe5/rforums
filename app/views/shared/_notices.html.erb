@@ -1,23 +1,39 @@
+<% flash[:success] = "asdf" %>
 <style type="text/css" media="screen">
   #flash_notice{
+    bottom:0;
+    color: #eee;
     display:block;
+    left:0;
     margin: 0 auto;
-    position:fixed;bottom:0;left:0;right:0;
+    position:fixed;
+    right:0;        
+    text-shadow: 0 1px 1px #000;
   }
   #flash_notice .flashmessage{
+    color: #eee;
+    font-size: 16px;
+    font-weight: bold;
     padding:20px;
-    border-top:2px solid #000;
+    /* border-top:2px solid #000;*/
     text-align:center;
-    font-size: 14px;
-    color: #000;
+
   }
   #flasherrors.flashmessage{
-    border-color: #d00;
-    background-color: #f5a5a5;
+  	color: #faddde;
+  	border: solid 1px #980c10;
+  	background: #d81b21;
+  	background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#aa1317));
+  	background: -moz-linear-gradient(top,  #ed1c24,  #aa1317);
+  	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317');
   }
   #flashnotice.flashmessage{
-    border-color: #0d0;
-    background-color: #a5f5a5;
+  	color: #e8f0de;
+  	border: solid 1px #538312;
+  	background: #64991e;
+  	background: -webkit-gradient(linear, left top, left bottom, from(#7db72f), to(#4e7d0e));
+  	background: -moz-linear-gradient(top,  #7db72f,  #4e7d0e);
+  	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db72f', endColorstr='#4e7d0e');
   }
 </style>
 

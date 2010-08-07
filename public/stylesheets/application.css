@@ -41,7 +41,7 @@ h1,h2,h3,h4,h5,h6{
 #login{
 	margin-top: 35px;
 	position:absolute;
-	right: 0px;
+	right: 35px;
 }
 
 #footer{
@@ -142,7 +142,65 @@ line-height: 20px;
 #category-admin #category-new-form{
   margin-top: 15px;
 }
+ 
 
+/* Topic */
+.created_at{
+  background-color: #666666;
+  color: #ccc;
+  padding: 2px 5px;
+}
+.author{
+  background: #eee;
+  height: 40px;
+	margin-bottom: 15px;
+  padding: 7px;
+}
+.author .gravatar{
+  width: 40px;
+  height: 40px;
+  background: #ccc;
+  float: left;
+}
+.author .user{
+  height: 40px;
+  margin-left: 10px;
+  float: left;
+}
+.author .user-role{
+  font-size: 14px;
+}
+.author .actions{
+  height: 40px;
+  float: right;    
+}
+.topic-post-content h2{
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd	;
+}
+.topic-post-content .topic-post-body{
+  margin: 10px 0;
+}
+.topic-post-content .topic-post-footer{
+  border-top: 1px dashed #ddd;
+  color: #aaa;
+	font-size: 12px;
+  margin-bottom: 40px;
+  margin-top: 15px;
+  padding-top: 5px;
+}
+#reply{}
+#reply h3{
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+#reply textarea{
+  width: 500px;
+  height: 100px;
+}
+/* End Topic */
 
 /* Forms */
 .block{

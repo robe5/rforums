@@ -18,6 +18,17 @@ module ApplicationHelper
     links.map{|link| link_to link.first, link.last }
   end
   
+  def item_path(item)
+    case item.class.to_s
+    when "Topic"
+      [@category, item]
+    when "Post"
+      [@category, @topic, item]
+    else
+      "#"
+    end
+  end
+  
   def gravatar(email, size = nil)
     url = "http://www.gravatar.com/avatar/"
     hash = Digest::MD5.hexdigest(email.downcase).to_s
