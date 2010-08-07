@@ -1,2 +1,9 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+$(document).ready(function(){
+	// Category's actions
+	$('.category').hover(function(){
+		$(this).find('.actions').show();
+	}, function(){
+		$(this).find('.actions').hide();
+	});
+	
+});

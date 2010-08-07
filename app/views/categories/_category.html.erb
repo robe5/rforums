@@ -5,7 +5,7 @@
       <span><%= category.description %></span>
     <% end %>
     <% if admin? %>
-    <div class="actions">
+    <div class="actions" style="display:none">
       <%= link_to_function "Edit", "$('#category-#{category.id} .category-update-form').show().find('input[type=text]').first().focus();" %> |
       <%= link_to "Destroy", category, :method => :delete, :remote => true %>
     </div>
