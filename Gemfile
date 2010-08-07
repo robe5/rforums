@@ -33,7 +33,7 @@ group :test do
   gem "mocha", '0.9.8'
   gem 'rspactor', '0.7.0.beta.5'
 end
-group :test do
-  gem 'ruby-debug19', :require => 'ruby-debug'
-end
+# group :test do
+#   gem 'ruby-debug19', :require => 'ruby-debug'
+# end
   
