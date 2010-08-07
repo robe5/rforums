@@ -7,7 +7,7 @@
     <% if admin? %>
     <div class="actions" style="display:none">
       <%= link_to "Edit", "#", :class => "action-edit", :'data-category' => "#{category.id}" %> |
-      <%= link_to "Destroy", category, :method => :delete, :remote => true %>
+      <%= link_to "Destroy", category, :method => :delete, :remote => true, :class => 'caution' %>
     </div>
     <% end %>
   </div>

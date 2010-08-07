@@ -10,7 +10,7 @@
     </div>
     <div class="actions">
       <% if admin? %>
-        <%= link_to 'Delete', item_path(topic_post), :method => :delete, :"data-confirm" => "Are you sure?" %> | 
+        <%= link_to 'Delete', item_path(topic_post), :method => :delete, :"data-confirm" => "Are you sure?", :class => 'caution' %> | 
       <% end %>
       <%= link_to 'Reply', :anchor => 'reply' %>
     </div>
