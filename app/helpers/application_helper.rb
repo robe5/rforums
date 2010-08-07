@@ -15,7 +15,13 @@ module ApplicationHelper
         links << [@topic.title, [@category, @topic]]
       end
     end
-    links.map{|link| link_to link.first, link.last }
+    links.map do |link| 
+      if links.size > 1 && link == links.last
+        link.first
+      else
+        link_to link.first, link.last
+      end
+    end
   end
   
   def item_path(item)

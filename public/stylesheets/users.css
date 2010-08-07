@@ -1,9 +1,11 @@
 body{
+	font-family: 'Lucida Grande', 'Lucida Sans Unicode';
+	font-size: 13px;
+	color: #333;
 } 
 
 h1,h2,h3,h4,h5,h6{
 	color: #000;
-	font-family: 'Lucida Grande', 'Lucida Sans Unicode';
 	font-weight: normal;
 }
 .content{
@@ -15,6 +17,7 @@ h1,h2,h3,h4,h5,h6{
 .page_title{
 	font-size: 2em;
 	border-bottom: 1px solid #ccc;
+	margin-bottom: 35px;
 	text-align: center;
 }
 
@@ -23,20 +26,21 @@ h1,h2,h3,h4,h5,h6{
 }
             
 label{
+	display:block;
 	font-weight: bold;
 }
 
-ul#register{
+#register, #user-info{
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
-#register li{
+#register li, #user-info li{
 	margin-bottom: 20px;
 }
 
-#register label{
+#register label, #user-info label{
 	display:block;
 	margin-bottom: 5px;
 }

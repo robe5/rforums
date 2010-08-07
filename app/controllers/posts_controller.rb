@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_filter :find_topic
-  before_filter :sign_in_required, :only => [ :create ]
+  before_filter :sign_in_required, :only => [:create]
   before_filter :admin_required, :only => [:destroy]  
   
   def create

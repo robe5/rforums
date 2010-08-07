@@ -12,7 +12,7 @@
       <h1 class="page_title">Forums Comunity</h1>
       <div id="login">
         <% if signed_in? %>
-          Logged in as <%= link_to current_user.name, current_user %> | <%= link_to "Logout", logout_path %>
+          Logged in as <%= link_to current_user.name, edit_user_path(current_user.id) %> | <%= link_to "Logout", logout_path %>
         <% else %>
           <%= link_to 'register', new_user_path %> | <%= link_to 'login', users_path %>
         <% end %>

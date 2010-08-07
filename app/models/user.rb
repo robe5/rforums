@@ -57,6 +57,10 @@ class User
     write_attribute(:email, new_email)
   end
   
+  def role
+    admin ? 'admin' : 'member'
+  end
+  
   def password_required?
     crypted_password.blank? || !password.blank?
   end

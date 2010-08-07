@@ -61,10 +61,10 @@ module Authentication
     #
     #   skip_before_filter :sign_in_required
     #
-    def sign_in_required
+    def sign_in_required 
       authorized? || access_denied
     end
-    
+        
     def admin_required
       admin? || access_denied
     end
@@ -95,7 +95,7 @@ module Authentication
     #
     # We can return to this location by calling #redirect_back_or_default.
     def store_location
-      session[:return_to] = request.request_uri
+      session[:return_to] = request.fullpath
     end
 
     # Redirect to the URI stored by the most recent store_location call or

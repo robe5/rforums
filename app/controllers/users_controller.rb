@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   layout 'users'
-  before_filter :sign_in_required, :only => [ :show ]
+  before_filter :sign_in_required, :only => [:edit, :update]
+  before_filter :require_right_user, :only => [:edit, :update]
   
   def show
     @user = User.find(params[:id])
@@ -21,13 +22,26 @@ class UsersController < ApplicationController
     end
   end
   
+  def edit
+    @user = User.find(params[:id])
+  end
+  
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      flash[:success] = "Usuario actualizado"
+      flash[:success] = "User updated"
+      redirect_to root_path
     else
       flash[:error] = @user.errors.full_messages.to_sentence
+      render 'show'
     end
-    redirect_to root_path
+  end
+  
+  private
+  def require_right_user
+    if current_user.id.to_s != params[:id]
+      flash[:error] = "You cannot edit this user"
+      redirect_to :action => :show, :id => params[:id]
+    end
   end
 end

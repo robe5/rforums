@@ -5,7 +5,7 @@
   <div class="author">
     <div class="gravatar"><%= image_tag gravatar(topic_post.user.email, 40) %></div>
     <div class="user">
-        <%= link_to topic_post.user_name, users_path(topic_post.user_id) %><br />
+        <%= link_to topic_post.user_name, user_path(topic_post.user_id) %><br />
         <span class="user-role">member</span>
     </div>
     <div class="actions">

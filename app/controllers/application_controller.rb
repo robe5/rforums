@@ -6,12 +6,7 @@ class ApplicationController < ActionController::Base
   
   rescue_from MongoMapper::DocumentNotFound, :with => :document_not_found
   
-  private
-  
-  def authorized?
-    admin?
-  end
-  
+  private  
   def document_not_found
     flash[:error] = "Document not found"
     redirect_to root_path and return
