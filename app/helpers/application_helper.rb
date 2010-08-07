@@ -20,7 +20,7 @@ module ApplicationHelper
   
   def gravatar(email, size = nil)
     url = "http://www.gravatar.com/avatar/"
-    hash = Digest::MD5.new(email).to_s
+    hash = Digest::MD5.hexdigest(email.downcase).to_s
     param = "?s=#{size}" if size
     [url, hash, param].join
   end

@@ -16,6 +16,10 @@ class Item
   # Callbacks
   before_create :cache_user_name  
                                 
+  def self.recent(limit = 10)
+    limit(limit).order('created_at DESC').all
+  end
+
   private
   def cache_user_name
     self.user_name = user.name

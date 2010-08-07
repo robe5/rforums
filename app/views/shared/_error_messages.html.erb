@@ -1,8 +1,8 @@
-<% if @user.errors.any? %>  
+<% if target.errors.any? %>  
 <div id="errorExplanation">  
-  <h3><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h3>
+  <h3><%= pluralize(target.errors.count, "error") %> prohibited this user from being saved:</h3>
   <ul>  
-  <% @user.errors.full_messages.each do |msg| %>  
+  <% target.errors.full_messages.each do |msg| %>  
     <li><%= msg %></li>  
   <% end %>  
   </ul>  

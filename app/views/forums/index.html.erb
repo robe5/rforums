@@ -3,17 +3,16 @@
 <% end %>
 
 <% if admin? %>
-<div id="category-admin">
+<div id="forum-admin">
   <div class="actions">
-    <%= link_to_function "Create category", "$('#category-new-form').show().find('input[type=text]').first().focus();" %>
+    <%= link_to_function "Create category", "$('#category-new-form').show().find('input[type=text]').first().focus();$(this).hide()", :class => "awesome small orange" %>
   </div>
-
   <div id="category-new-form" style="display:none">
     <%= form_for Category.new, :remote => true do |form| %>
       <ul>
         <%= render :partial => 'categories/form', :locals => {:form => form} %>
         <li>
-          <%= form.submit "Create" %> or <%= link_to_function "Cancel", "$('#category-new-form').hide().find('input[type=text]').attr('value','');" %>
+          <%= form.submit "Create", :class => "awesome small black" %> or <%= link_to_function "Cancel", "$('#category-new-form').hide().find('input[type=text]').attr('value','');" %>
         </li>
       </ul>
     <% end %> 
@@ -27,4 +26,14 @@
   <ul id="categories">
     <%= render @categories %>
   </ul>
+  <div id="recent-posts">
+    <h3>Recent Posts</h3>
+    <% if @items.size == 0 %>
+      <p>There are not any posts yet.</p>
+    <% else %>
+      <ul id="posts">
+        <%= render @items %>
+      </div>
+    <% end %>
+  </div>
 <% end %>

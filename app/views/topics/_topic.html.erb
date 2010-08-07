@@ -1,0 +1,5 @@
+<li class="post">
+  <%= link_to topic.title, category_topic_path(topic.category, topic) %>
+  <br />
+  <%= topic.user_name %> posted on <%= topic.created_at.to_s(:short) %>
+</li>

@@ -2,13 +2,13 @@
 <html>
 <head>
   <title>Forums</title>
-  <%= stylesheet_link_tag 'application', 'buttons' %>
+  <%= stylesheet_link_tag 'reset', 'application', 'buttons' %>
   <%= javascript_include_tag 'jquery-1.4.2.min.js', 'rails.jquery.js', 'flasher.js' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div id="wrapper" class="content">
-    <div id="header">
+  <div id="header">
+    <div class="content">
       <h1 class="page_title">Forums Comunity</h1>
       <div id="login">
         <% if signed_in? %>
@@ -18,18 +18,21 @@
         <% end %>
       </div>
     </div>
-    
+  </div>
+  
+  <div id="wrapper" class="content">
     <div id="breadcrump">
       <%= breadcrumps.join(" &raquo; ").html_safe %>
     </div>
-    
     <div id="main">
       <%= yield %>
     </div>
-    <div id="footer">
-    </div>
   </div>
-  
+
+  <div id="footer" class="content">
+    <!--<%= link_to "sourceCode", '#' %> | <%= link_to "theAutor", "" %>-->
+  </div>
+
   <%= render :partial => 'shared/notices' %>
 </body>
 </html>

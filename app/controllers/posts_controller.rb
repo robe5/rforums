@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_filter :find_topic
-  before_filter :authenticate, :only => [ :create ]
-  before_filter :authorized?, :only => [:destroy]  
+  before_filter :sign_in_required, :only => [ :create ]
+  before_filter :admin_required, :only => [:destroy]  
   
   def create
     params[:post].merge!(:topic => @topic, :user => current_user)

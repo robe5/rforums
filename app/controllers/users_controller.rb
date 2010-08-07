@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   layout 'users'
-  before_filter :authenticate, :only => [ :show ]
+  before_filter :sign_in_required, :only => [ :show ]
   
   def show
     @user = User.find(params[:id])

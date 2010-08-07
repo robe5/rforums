@@ -1,4 +1,4 @@
-<li id="category-<%= category.id %>">
+<li id="category-<%= category.id %>" class="category">
   <div class="category-name">
     <%= link_to category do %>
       <%= category.name %>
@@ -16,8 +16,9 @@
   <div class="category-update-form" style="display:none">
     <%= form_for category, :remote => true do |form| %>
       <%= render :partial => 'categories/form', :locals => {:form => form} %>
-      <%= form.submit "Update" %> or <%= link_to_function "Cancel", "$(this).parents('.category-update-form').hide();" %>
+      <%= form.submit "Update", :class => "awesome small black" %> or <%= link_to_function "Cancel", "$(this).parents('.category-update-form').hide();" %>
     <% end %>
   </div>
   <% end %>
+  <div class="clear"></div>
 </li>

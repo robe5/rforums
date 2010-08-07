@@ -4,7 +4,7 @@
 
 <style type="text/css" media="screen">
   .created_at{
-    background: #666666;
+    background-color: #666666;
     color: #ccc;
     padding: 2px 5px;
   }
@@ -117,6 +117,6 @@
   <h3>Your reply</h3>
   <%= form_for [@category, @topic, Post.new] do |form| %>
     <%= form.text_area :text %><br />
-    <%= form.submit 'Submit', :class => "button orange" %>
+    <%= form.submit 'Submit', :class => "awesome small black" %>
   <% end %>
 </div>

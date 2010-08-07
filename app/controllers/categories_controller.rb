@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController  
   before_filter :authorized?, :only => [:create, :update, :destroy]
-  before_filter :authenticate, :only => [ :create ]
+  before_filter :admin_required, :only => [ :create ]
   
   def index
     redirect_to root_path

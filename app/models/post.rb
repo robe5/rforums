@@ -6,7 +6,7 @@ class Post < Item
   # Callbacks
   after_create :increment
   after_destroy :decrement
-
+  
   private  
   def increment
     topic.increment(1)
