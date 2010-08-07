@@ -12,7 +12,7 @@
     </li>
     <li class="block submit">
       <%= form.submit 'Create', :disable_with => 'Creating topic...', :class => "awesome small black" %>
-      or <%= link_to 'cancel', categories_path %>
+      or <%= link_to 'cancel', @category %>
     </li>
   </ul>
 <%- end -%>
