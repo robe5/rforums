@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  layout 'users'
+  
   def create
     @user = User.authenticate(params[:email], params[:password])
     if @user
@@ -10,11 +12,7 @@ class SessionsController < ApplicationController
       redirect_to users_path
     end
   end
-  
-  def logout
-    destroy and return
-  end
-  
+    
   def destroy
     self.current_user = nil
     redirect_to root_path
