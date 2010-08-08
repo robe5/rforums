@@ -9,7 +9,9 @@ Forums::Application.routes.draw do |map|
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
-  match 'logout' => 'sessions#destroy', :as => :logout
+  match 'register'  => 'users#new',         :as => :register
+  match 'login'     => 'sessions#new',      :as => :login
+  match 'logout'    => 'sessions#destroy',  :as => :logout
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :forums

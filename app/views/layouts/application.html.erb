@@ -14,7 +14,7 @@
         <% if signed_in? %>
           Logged in as <%= link_to current_user.name, edit_user_path(current_user.id) %> | <%= link_to "Logout", logout_path %>
         <% else %>
-          <%= link_to 'register', new_user_path %> | <%= link_to 'login', users_path %>
+          <%= link_to 'register', register_path %> | <%= link_to 'login', login_path %>
         <% end %>
       </div>
     </div>
