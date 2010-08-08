@@ -79,4 +79,10 @@ describe User do
     User.authenticate(@valid_attributes[:email], "new_password")
   end
   
+  it "should not change password if password is blank" do
+    @user = User.create(@valid_attributes)
+    @user.password = @user.password_confirmation = ""
+    @user.save!
+    User.authenticate(@valid_attributes[:email], @valid_attributes[:password])
+  end
 end

@@ -34,21 +34,27 @@ class User
   after_update :update_items_cache
   
   def authenticated?(secret)
-    password == secret ? true : false
+    BCrypt::Password.new(crypted_password) == secret ? true : false
   end
   
   def password
-    if crypted_password.present?
-      @password ||= BCrypt::Password.new(crypted_password)
-    else
-      nil
-    end
+    @password
   end
   
   def password=(value)
     if value.present?
       @password = value
       self.crypted_password = BCrypt::Password.create(value)
+    end
+  end
+  
+  def password_confirmation
+    @password_confirmation
+  end
+  
+  def password_confirmation=(value)
+    if value.present?
+      @password_confirmation = value
     end
   end
   
