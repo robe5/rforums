@@ -27,6 +27,15 @@
       <%= form.label :name %>
       <%= form.text_field :name, :class => 'text' %>
     </li>
+    <li>
+      <%= form.label :password %>
+      <%= form.text_field :password, :class => 'text' %>
+    </li>
+    <li>
+      <%= form.label :password_confirmation %>
+      <%= form.text_field :password_confirmation, :class => 'text' %>
+    </li>
+    
     <li class="submit">
       <%= submit_tag 'Save', :disable_with => 'Signing you up...', :class => 'awesome small black' %>
       or <%= link_to 'Cancel', root_path %>

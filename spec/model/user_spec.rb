@@ -62,4 +62,21 @@ describe User do
     @user.admin = true
     @user.role.should == "admin"
   end
+  
+  it "should authenticate" do
+    @user = User.create(@valid_attributes)
+    User.authenticate(@valid_attributes[:email], @valid_attributes[:password]).should == @user
+  end
+  
+  it "should not authenticate" do
+    @user = User.create(@valid_attributes)
+    User.authenticate(@valid_attributes[:email], "testtest").should be_nil
+  end
+  
+  it "should change the password" do
+    @user = User.create(@valid_attributes)
+    @user.password = @user.password_confirmation = "new_password"
+    User.authenticate(@valid_attributes[:email], "new_password")
+  end
+  
 end

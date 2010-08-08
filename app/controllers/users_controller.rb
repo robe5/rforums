@@ -28,12 +28,13 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
+    params[:user].except!(:password, :password_confirmation) if params[:user][:password].blank?
     if @user.update_attributes(params[:user])
       flash[:success] = "User updated"
-      redirect_to root_path
+      redirect_to @user
     else
       flash[:error] = @user.errors.full_messages.to_sentence
-      render 'show'
+      render 'edit'
     end
   end
   
