@@ -3,3 +3,6 @@
 
 en:
   hello: "Hello world"
+  notifications:
+    password_recovery:
+      subject: "[Forums] User recovery"

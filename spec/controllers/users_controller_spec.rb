@@ -169,6 +169,11 @@ describe UsersController do
         post :recover, :email => "user@test.com"
         response.should redirect_to(root_path)
       end
+      
+      it "should send an email with the instructions" do
+        Notifications.expects(:password_recovery).with(@user).returns(mock(:deliver))
+        post :recover, :email => "user@test.com"
+      end
     end
     
     context 'with an invalid email' do
