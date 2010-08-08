@@ -27,12 +27,13 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # group :test do
 #   gem 'webrat'
 # end
-group :test do
-  gem "rspec", "2.0.0.beta.19"
-  gem "rspec-rails", "2.0.0.beta.19"
-  gem "mocha", '0.9.8'
-#  gem 'rspactor', '0.7.0.beta.5'
-end
+# group :test do
+#   gem "rspec", "2.0.0.beta.19"
+#   gem "rspec-rails", "2.0.0.beta.19"
+#   gem "mocha", '0.9.8'
+#   gem "factory_girl"
+#   gem 'rspactor', '0.7.0.beta.5'
+# end
 # group :test do
 #   gem 'ruby-debug19', :require => 'ruby-debug'
 # end

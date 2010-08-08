@@ -37,6 +37,7 @@ GEM
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    factory_girl (1.3.2)
     ffi (0.6.3)
       rake (>= 0.8.7)
     growl (1.0.3)
@@ -118,6 +119,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby
   bson_ext
+  factory_girl
   mocha (= 0.9.8)
   mongo_mapper
   rails (= 3.0.0.rc)
