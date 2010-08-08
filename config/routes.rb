@@ -20,8 +20,13 @@ Forums::Application.routes.draw do |map|
       resources :posts
     end
   end
-  resources :users
-  resources :sessions
+  resources :users do
+    get :help
+    post :recover
+  end
+  resources :sessions do
+    get :recovery
+  end
   # Sample resource route with options:
   #   resources :products do
   #     member do

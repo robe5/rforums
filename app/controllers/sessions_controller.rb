@@ -12,6 +12,18 @@ class SessionsController < ApplicationController
       redirect_to users_path
     end
   end
+  
+  def recovery
+    @user = User.first(:conditions => {:reset_password_code => params[:token], :reset_password_code_until.gte => Time.now})
+    if @user
+      current_user = @user
+      flash[:success] = "Please change your password"
+      redirect_to edit_user_path(@user)
+    else
+      flash[:error] = "Token not valid"
+      redirect_to root_path
+    end
+  end
     
   def destroy
     self.current_user = nil

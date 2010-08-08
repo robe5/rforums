@@ -36,7 +36,22 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+
+  def help
+  end
   
+  def recover
+    @user = User.first(:conditions => {:email => params[:email]})
+    if @user
+      @user.set_password_code!
+      flash[:success] = "Please check your email"
+      redirect_to root_path
+    else
+      flash[:error] = "Your account could not be found"
+      redirect_to help_user_path
+    end
+  end
+    
   private
   def require_right_user
     if current_user.id.to_s != params[:id]

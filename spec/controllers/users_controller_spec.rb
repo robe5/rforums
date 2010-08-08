@@ -135,4 +135,56 @@ describe UsersController do
       
     end # logged in
   end # PUT update
+  
+  describe 'GET help' do
+    it "should be success" do
+      get 'help'
+      response.should be_success
+    end
+  end
+  
+  describe 'POST recover' do
+    before(:each) do
+      @user = User.new(:name => "User", :email => "user@test.com", :password => 12341234, :password_confirmation => 12341234)
+      
+    end
+    
+    context 'with a valid email' do
+      before(:each) do
+        User.expects(:first).with(:conditions => {:email => "user@test.com"}).returns(@user)
+        @user.stubs(:set_password_code!)
+      end
+      
+      it "should set the password code" do
+        @user.expects(:set_password_code!)
+        post :recover, :email => "user@test.com"
+      end
+    
+      it "should have a flash success message" do
+        post :recover, :email => "user@test.com"
+        flash.should have_key(:success)
+      end
+      
+      it "should redirect to root path" do
+        post :recover, :email => "user@test.com"
+        response.should redirect_to(root_path)
+      end
+    end
+    
+    context 'with an invalid email' do
+      before(:each) do
+        User.expects(:first).with(:conditions => {:email => "user@test.com"}).returns(nil)
+      end
+
+      it "should have a flash error message" do
+        post :recover, :email => "user@test.com"
+        flash.should have_key(:error)
+      end
+      
+      it "should redirect to help user path" do
+        post :recover, :email => "user@test.com"
+        response.should redirect_to(help_user_path)
+      end
+    end
+  end
 end
