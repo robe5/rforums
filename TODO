@@ -2,8 +2,13 @@ css usuarios
 listado de usuarios
 crear admins
 
-borrar prototype
-
 titulos en html head
 
-emails duplicados
+FEATURES
+Orden de las categorias
+
+BUG
+Editar usuario: Se puede poner password sin confirmacion y funciona
+Posts: firma no sale bien
+Posts: el role no funciona bien
+root_path: al crear category se muestran todos los enlaces de admin

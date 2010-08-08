@@ -8,6 +8,9 @@
   #user-info{
     margin-left: 150px;
   }
+  #user-info h3{
+    font-weight: bold;
+  }
 </style>
 <h1 class="page_title"><%= @user.name %></h1>
 
@@ -20,6 +23,10 @@
     <li>
       <h3><%= @user.name %></h3>
       <%= @user.role %>
+    </li>
+    <li>
+      <strong>Signature</strong><br />
+      <%= @user.signature %>
     </li>
   </ul>
 </div>

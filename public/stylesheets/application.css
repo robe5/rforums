@@ -146,8 +146,8 @@ a.caution{
 
 /* Topic */
 .created_at{
-  background-color: #666666;
-  color: #ccc;
+  background-color: #ccc;
+  color: #333;
   padding: 2px 5px;
 }
 .author{
@@ -168,7 +168,8 @@ a.caution{
   float: left;
 }
 .author .user-role{
-  font-size: 14px;
+	color: #666;
+  font-size: 12px;
 }
 .author .actions{
   height: 40px;

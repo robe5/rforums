@@ -11,6 +11,10 @@ class Topic < Item
   # Validations
   validates_presence_of :category_id
 
+  def last_post_id
+    @last_post_id ||= (posts.size > 0 ? posts.last.id : id)
+  end
+
   def last_user_name
     @last_user_name ||= (posts.size > 0 ? posts.last.user_name : user_name)
   end

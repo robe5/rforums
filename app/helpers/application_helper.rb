@@ -41,4 +41,12 @@ module ApplicationHelper
     param = "?s=#{size}" if size
     [url, hash, param].join
   end
+  
+  def user_signature(user)
+    if user.signature.present?
+      user.signature
+    else
+      user.name
+    end
+  end
 end

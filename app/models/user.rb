@@ -4,8 +4,9 @@ require 'bcrypt'
 class User      
   include MongoMapper::Document
   
-  key :email, String, :required => true
-  key :name,  String, :required => true
+  key :email,     String, :required => true
+  key :name,      String, :required => true
+  key :signature, String, :required => true
   key :admin, Boolean
   key :crypted_password, String
   key :reset_password_code, String

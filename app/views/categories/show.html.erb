@@ -4,10 +4,11 @@
 
 <style type="text/css" media="screen">
   .data thead{
-    background: #666;
-    color: #ccc;
+    background: #ccc;
+    color: #333;
   }
   .data th{
+    font-weight: bold;
     padding: 5px 10px;
   }
   .data th, .data td{
@@ -17,8 +18,14 @@
     text-align:center;
   }
   .data td{
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #ddd;
     padding: 10px;
+  }
+  .even{
+    background-color: #f5f5f5;
+  }
+  .odd{
+    background-color: #fafafa;
   }
 </style>
 
@@ -34,15 +41,14 @@
   </thead>
   <tbody>  
     <% @topics.each do |topic| %>
-      <tr class="topic-<%= topic.level %>">
+      <tr class="topic-<%= topic.level %> <%= cycle(:odd, :even) %>">
         <td>
           <%= link_to topic.title, [@category, topic] %><br />
           <%= topic.user_name %>
         </td>
         <td class="center"><%= topic.post_count %></td>
         <td>
-          <!-- enlace al ultimo post o al topic si no tiene posts -->
-          <%= distance_of_time_in_words_to_now topic.updated_at %><br />
+          <%= link_to distance_of_time_in_words_to_now(topic.updated_at), category_topic_path(topic.category, topic, :anchor => "post-#{topic.last_post_id}") %><br />
           by <%= topic.last_user_name %>
         </td>
       </tr>

@@ -6,7 +6,7 @@
     <div class="gravatar"><%= image_tag gravatar(topic_post.user.email, 40) %></div>
     <div class="user">
         <%= link_to topic_post.user_name, user_path(topic_post.user_id) %><br />
-        <span class="user-role">member</span>
+        <span class="user-role"><%= topic_post.user.role %></span>
     </div>
     <div class="actions">
       <% if admin? %>
@@ -17,13 +17,13 @@
   </div>
   <div class="topic-post-content">
     <% if topic_post.respond_to?(:title) %>
-    <h2><%= @topic.title %></h2>
+    <h2><%= topic_post.title %></h2>
     <% end %>
     <div class="topic-post-body">
       <%= topic_post.text %>
     </div>
     <div class="topic-post-footer">
-      <%= @topic.user_name %>
+      <%= user_signature(topic_post.user) %>
     </div>
   </div>
 </div>

@@ -7,7 +7,7 @@ $(document).ready(function(){
 			.find('input[type=text]')
 			.attr('value', '')
 			.first().focus();
-		$('.actions').toggle();
+		$('#forum-admin .actions').toggle();
 	});
 	
 	// Edit Category
