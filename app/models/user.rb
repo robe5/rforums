@@ -6,7 +6,7 @@ class User
   
   key :email,     String, :required => true
   key :name,      String, :required => true
-  key :signature, String, :required => true
+  key :signature, String
   key :admin, Boolean
   key :crypted_password, String
   key :reset_password_code, String
