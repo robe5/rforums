@@ -38,7 +38,6 @@ Forums::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.default_url_options = { :host => "forums-dev.heroku.com" }
-
   # Enable threaded mode
   # config.threadsafe!
 end
