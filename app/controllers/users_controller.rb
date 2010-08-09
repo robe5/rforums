@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def index
     if params[:query]
-      @users = User.all(:conditions => {:name => /#{params[:query]}/})
+      @users = User.all(:conditions => {:name => /#{params[:query]}/i})
     else
       @users = User.all
     end
