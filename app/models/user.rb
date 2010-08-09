@@ -12,6 +12,8 @@ class User
   key :reset_password_code, String
   key :reset_password_code_until, Time
   
+  timestamps!
+
   RegEmailName   = '[\w\.%\+\-]+'
   RegDomainHead  = '(?:[A-Z0-9\-]+\.)+'
   RegDomainTLD   = '(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)'

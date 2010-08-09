@@ -2,6 +2,14 @@ class UsersController < ApplicationController
   layout 'users'
   before_filter :sign_in_required, :only => [:edit, :update]
   before_filter :require_right_user, :only => [:edit, :update]
+
+  def index
+    if params[:query]
+      @users = User.all(:conditions => {:name => /#{params[:query]}/})
+    else
+      @users = User.all
+    end
+  end
   
   def show
     @user = User.find(params[:id])

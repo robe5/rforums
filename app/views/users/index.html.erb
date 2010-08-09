@@ -1,0 +1,56 @@
+<% content_for :page_title do %>
+  Manage users
+<% end %>
+
+<style type="text/css" media="screen">
+  .data thead{
+    background: #ccc;
+    color: #333;
+  }
+  .data th{
+    font-weight: bold;
+    padding: 5px 10px;
+  }
+  .data th, .data td{
+    text-align: left;
+  }
+  .data .center{
+    text-align:center;
+  }
+  .data td{
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+  }
+  .even{
+    background-color: #f5f5f5;
+  }
+  .odd{
+    background-color: #fafafa;
+  }
+</style>
+
+<%= form_tag users_path, :method => 'get' do %>
+  <%= text_field_tag :query, '', :placeholder => 'User name', :class => 'text' %>
+  <%= submit_tag 'Search', :class => "awesome small black" %>
+<% end %>
+
+<table class="data" width="100%" cellspacing="0" cellpadding="0">
+  <thead>
+    <th width="70%">User</th>
+    <th width="10%" class="center">Role</th>
+    <th width="20%">Created at</th>
+  </thead>
+  <tbody>  
+    <% @users.each do |user| %>
+      <tr class="user-<%= user.role %> <%= cycle(:odd, :even) %>">
+        <td>
+          <%= link_to user.name, user %>
+        </td>
+        <td class="center"><%= user.role %></td>
+        <td>
+          <%#= link_to user.created_at.to_s(:long) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
