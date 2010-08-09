@@ -49,3 +49,4 @@ ActionMailer::Base.smtp_settings = {
   :password     => ENV['SENDGRID_PASSWORD'],
   :domain       => ENV['SENDGRID_DOMAIN']
 }
+ActionMailer::Base.default_url_options[:host] = "forums-dev.heroku.com"

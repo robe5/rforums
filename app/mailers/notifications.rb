@@ -1,5 +1,5 @@
 class Notifications < ActionMailer::Base
-  default :from => "forums@forums.local"
+  default :from => "robe5.agf@gmail.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:

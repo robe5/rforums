@@ -20,3 +20,5 @@ Forums::Application.configure do
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
 end
+
+ActionMailer::Base.default_url_options[:host] = "0.0.0.0:3000"
