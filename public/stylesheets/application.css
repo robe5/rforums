@@ -5,6 +5,7 @@ body{
 	background-color: #fff; 
   color: #434343;
   font-family: 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
+
   font-size: 13px;
   margin:0;
 }
@@ -55,16 +56,11 @@ a.caution{
 }
 
 #footer{
-/*	border-top: 1px solid #eee;
-	margin-top: 50px;
-	padding:10px 0;
-	*/
 	margin-top: 100px;
 }
 
-
 #breadcrump{
-	margin: 10px 0;
+	margin: 15px 0;
 	padding: 0;
 	color: #666;
 	text-transform: uppercase;
@@ -127,9 +123,11 @@ a.caution{
   font-weight: bold;
   margin-bottom: 5px;
 }
+
 #recent-posts #posts{
   border-top: 1px solid #e5e5e5;
 }
+
 #recent-posts #posts .post{
   border-bottom: 1px solid #e5e5e5;
   font-size: 12px;
@@ -144,76 +142,147 @@ a.caution{
 #category-admin #category-new-form{
   margin-top: 15px;
 }
- 
 
-/* Topic */
-.created_at{
-  background-color: #ccc;
-  color: #333;
-  padding: 2px 5px;
+.topic{
+  margin-bottom: 30px;
 }
-.author{
-  background: #eee;
+
+.meta{
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+  padding: 10px 0;
+  position: relative;
+}
+
+.meta .avatar{
+  float: left;
+  margin: 0 10px 10px 10px;
   height: 40px;
-	margin-bottom: 15px;
-  padding: 7px;
-}
-.author .gravatar{
   width: 40px;
-  height: 40px;
-  background: #ccc;
-  float: left;
 }
-.author .user{
-  height: 40px;
-  margin-left: 10px;
-  float: left;
+
+.meta h4{
+  margin: 0;
 }
-.author .user-role{
-	color: #666;
-  font-size: 12px;
+
+.meta .date{
+  color: #777;
+  font-size: 11px;
+  margin: 0;
+  padding-bottom: 10px;
 }
-.author .actions{
-  height: 40px;
-  float: right;    
+
+.admin-functions{
+	font-size: 11px;
+  position: absolute;
+  right: 10px;
+	text-transform: uppercase;
+  top: 10px;
 }
-.topic-post-content h2{
-  font-size: 20px;
-  font-weight: bold;
-  border-bottom: 1px solid #ddd	;
+
+.admin-functions ul{
+  float: right;
+  margin: 0;
 }
-.topic-post-content .topic-post-body{
-  margin: 10px 0;
+
+.admin-functions ul.actions li{
+  display:inline;
+  list-style-type: none;
+  margin: 0;
+  padding: 0
 }
-.topic-post-content .topic-post-footer{
+
+.admin-functions ul.actions li a{
+  font-weight: normal;
+  padding: 1px 2px;
+}
+
+.topic h1{
+  color: #000;
+	border-bottom: 1px solid #e5e5e5;
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 30px;
+  margin: 20px 10px;
+	padding-bottom: 5px;
+}
+
+.topic .body{
+  margin: 20px 10px;
+}
+
+.topic .footer{
   border-top: 1px dashed #ddd;
   color: #aaa;
 	font-size: 12px;
-  margin-bottom: 40px;
-  margin-top: 15px;
-  padding-top: 5px;
+	padding-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
 }
+/* End Topic */
+
+
+/* Post */
+.post{
+	padding-bottom:30px;
+}
+
+.post .meta{
+  border: 0;
+	background-color: #f5f5f5; 
+	font-size: 11px;
+	padding-left: 10px;
+	position:relative;
+}
+
+.post .avatar{
+  float: left;
+  margin-left:10px;
+}
+
+.post .body{
+	margin: 10px 10px 10px 60px;
+	border-left: 1px solid #ccc;
+	padding-left: 10px;
+}
+
+.post .footer{
+  border-top: 1px dashed #ddd;
+  color: #aaa;
+	font-size: 12px;
+	margin-top: 10px;
+	padding-top: 10px;
+}
+/* End Post */
+
+/* Reply */
 #reply{}
+
 #reply h3{
 	font-size: 1.2em;
 	font-weight: bold;
 	margin-bottom: 10px;
 }
+
 #reply textarea{
   width: 500px;
   height: 100px;
 }
-/* End Topic */
+/* End Reply
 
 /* Forms */
 .block{
 	margin:5px 0;
 }
+
 label{
 	font-weight: bold;
 	display:block;
 	margin: 5px 0;
 }
+
 input.text, textarea.text{
 	border: 1px solid #ccc;
 	margin:0;
@@ -224,9 +293,11 @@ input.large{
 	font-size: 1.2em;
 	padding:5px;
 }
+
 input.large, textarea.large{
 	width: 700px;
 }
+
 textarea.large{
 	padding: 5px;
 	height: 200px;
@@ -236,8 +307,8 @@ textarea.large{
 /*
  * Errors
  */
-#errorExplanation{
-}
+#errorExplanation{}
+
 .field_with_errors input, .field_with_errors textarea{
   border: 2px solid #f00;
   background-color: #faa;
@@ -254,12 +325,12 @@ textarea.large{
   right:0;        
   text-shadow: 0 1px 1px #000;
 }
+
 #flash_notice .flashmessage{
   color: #eee;
   font-size: 16px;
   font-weight: bold;
   padding:20px;
-  /* border-top:2px solid #000;*/
   text-align:center;
 
 }
@@ -271,6 +342,7 @@ textarea.large{
 	background: -moz-linear-gradient(top,  #ed1c24,  #aa1317);
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317');
 }
+
 #flashnotice.flashmessage{
 	color: #e8f0de;
 	border: solid 1px #538312;

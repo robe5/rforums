@@ -4,28 +4,38 @@
 
 <style type="text/css" media="screen">
   .data thead{
-    background: #ccc;
+    background-color: #fff;
     color: #333;
+    text-transform: uppercase;
   }
   .data th{
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
     font-weight: bold;
     padding: 5px 10px;
   }
   .data th, .data td{
     text-align: left;
+    line-height: 20px;
   }
   .data .center{
     text-align:center;
   }
   .data td{
     border-bottom: 1px solid #ddd;
-    padding: 10px;
+    padding: 5px 10px;
   }
   .even{
     background-color: #f5f5f5;
   }
   .odd{
     background-color: #fafafa;
+  }
+  .info{
+    font-size: 11px;
+  }
+  .info strong{
+    color: #434343;
   }
 </style>
 
@@ -37,19 +47,19 @@
   <thead>
     <th width="70%">Title</th>
     <th width="10%" class="center">Replies</th>
-    <th width="20%">Last Post</th>
+    <th width="20%">Lastest Post</th>
   </thead>
   <tbody>  
     <% @topics.each do |topic| %>
       <tr class="topic-<%= topic.level %> <%= cycle(:odd, :even) %>">
         <td>
           <%= link_to topic.title, [@category, topic] %><br />
-          <%= topic.user_name %>
+          <span class="info">Started by <strong><%= topic.user_name %></strong></span>
         </td>
         <td class="center"><%= topic.post_count %></td>
         <td>
           <%= link_to distance_of_time_in_words_to_now(topic.updated_at), category_topic_path(topic.category, topic, :anchor => "post-#{topic.last_post_id}") %><br />
-          by <%= topic.last_user_name %>
+          <span class="info">by <strong><%= topic.last_user_name %></strong></span>
         </td>
       </tr>
     <% end %>

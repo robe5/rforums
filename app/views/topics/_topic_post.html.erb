@@ -1,11 +1,8 @@
-<% if topic_post.is_a? Topic %>
-<div class="topic-post">
-  <div class="meta">
-    <%= image_tag gravatar(topic_post.user.email, 40), :class => 'avatar' %>
-    <h4><%= link_to topic_post.user_name, user_path(topic_post.user_id) %></h4>
-    <p class="date">
-      <span class="timestamp"><%= topic_post.created_at.to_s(:long) %></span>
-    </p>
+<div class="post">
+  <div class="meta" style="">
+    <span class="user-role" style="display:none"><%= topic_post.user.role %></span>
+    Posted by <strong><%= link_to topic_post.user.name, topic_post.user %></strong> 
+    on <span class="timestamp"><%= topic_post.created_at.to_s(:long) %></span>
     <div class="admin-functions">
       <ul class="actions">
         <% if admin? %>
@@ -13,65 +10,16 @@
         <li><%= link_to 'Delete', item_path(topic_post), :method => :delete, :"data-confirm" => "Are you sure?" %></li>
         <% end %>
         <li><%= link_to 'Reply', :anchor => 'reply' %></li>
+      </ul>
     </div>
   </div>
-
-  <div class="topic-post-body">
-    <h1 style="border-bottom: 1px solid #e5e5e5"><%= @topic.title %></h1>
-    <%= topic_post.text %>
-  </div>
-  <div class="topic-post-footer">
-    <%= user_signature(topic_post.user) %>
-  </div>
-</div>
-<% else %>
-
-<div class="topic-post-post" style="; padding-bottom:30px">
-  <p class="meta" style="background-color: #f5f5f5; padding-left: 10px;font-size: 11px">
-    <span class="user-role" style="display:none"><%= topic_post.user.role %></span>
-    Posted by <strong><%= link_to topic_post.user.name, topic_post.user %></strong> on <span class="timestamp"><%= topic_post.created_at.to_s(:long) %></span>
-  </p>
   
   <%= image_tag gravatar(topic_post.user.email, 40), :class => 'avatar' %>
-  <div class="body" style="margin: 10px 10px 10px 60px; border-left: 1px solid #ccc; padding-left: 10px">
+  <div class="body">
     <div><%= topic_post.text %></div>
-    <div class="topic-post-footer">
+    <div class="footer">
       <%= user_signature(topic_post.user) %>
-    </div>
-    
+    </div>    
   </div>
   <div class="clear"></div>
 </div>
-
-<!--
-<div id="post-<%= topic_post.id %>" class="topic-post">
-  <div class="created_at">
-    <%= distance_of_time_in_words_to_now topic_post.created_at %>
-  </div>
-  <div class="author">
-    <div class="gravatar"><%= image_tag gravatar(topic_post.user.email, 40) %></div>
-    <div class="user">
-        <%= link_to topic_post.user_name, user_path(topic_post.user_id) %><br />
-        <span class="user-role"><%= topic_post.user.role %></span>
-    </div>
-    <div class="actions">
-      <% if admin? %>
-        <%= link_to 'Delete', item_path(topic_post), :method => :delete, :"data-confirm" => "Are you sure?", :class => 'caution' %> | 
-      <% end %>
-      <%= link_to 'Reply', :anchor => 'reply' %>
-    </div>
-  </div>
-  <div class="topic-post-content">
-    <% if topic_post.respond_to?(:title) %>
-    <h2><%= topic_post.title %></h2>
-    <% end %>
-    <div class="topic-post-body">
-      <%= topic_post.text %>
-    </div>
-    <div class="topic-post-footer">
-      <%= user_signature(topic_post.user) %>
-    </div>
-  </div>
-</div>
--->
-<% end %>

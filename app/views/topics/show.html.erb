@@ -2,90 +2,33 @@
   <%= @category.name %>
 <% end %>
 
-<style type="text/css" media="screen">
-  .topic-post{
-    margin-bottom: 30px;
-  }
-  .meta{
-    border-bottom: 1px solid #e5e5e5;
-    border-top: 1px solid #e5e5e5;
-    margin-bottom: 10px;
-    padding: 10px 0;
-    position: relative;
-    background-color: #f5f5f5;
-  }
-  .meta .avatar{
-    float: left;
-    margin: 0 10px 10px 10px;
-    height: 40px;
-    width: 40px;
-  }
-  .meta h4{
-    margin: 0;
-  }
-  .meta .date{
-    color: #777;
-    font-size: 11px;
-    margin: 0;
-    padding-bottom: 10px;
-  }
-  .admin-functions{
-    right: 10px;
-    top: 10px;
-    position: absolute;
-  }
-  .admin-functions ul{
-    float: right;
-    margin: 0;
-  }
-  .admin-functions ul.actions li{
-    display:inline;
-    list-style-type: none;
-    margin: 0;
-    padding: 0
-  }
-  .admin-functions ul.actions li a{
-    font-weight: normal;
-    padding: 1px 2px;
-  }
-  h1{
-    color: #000;
-    font-size: 24px;
-    font-weight: normal;
-    line-height: 30px;
-    margin: 0 0 20px;
-  }
-  
-  .topic-post .topic-post-body{
-    margin: 20px 10px;
-  }
-  .topic-post .topic-post-footer{
-    border-top: 1px dashed #ddd;
-    color: #aaa;
-  	font-size: 12px;
-  	padding-top: 10px;
-  	margin-left: 10px;
-  	margin-right: 10px;
-  }
-  
-  .topic-post-post .meta{
-    border: 0;
-  }
-  .topic-post-post .avatar{
-    float: left;
-    margin-left:10px;
-  }
-  .topic-post-post .topic-post-footer{
-    border-top: 1px dashed #ddd;
-    color: #aaa;
-  	font-size: 12px;
-  	margin-top: 10px;
-  	padding-top: 10px;
-  }
-  
-</style>
+<div class="topic">
+  <div class="meta">
+    <%= image_tag gravatar(@topic.user.email, 40), :class => 'avatar' %>
+    <h4><%= link_to @topic.user_name, user_path(@topic.user_id) %></h4>
+    <p class="date">
+      <span class="timestamp"><%= @topic.created_at.to_s(:long) %></span>
+    </p>
+    <div class="admin-functions">
+      <ul class="actions">
+        <% if admin? %>
+        <li><%= link_to 'Edit', item_path(@topic) %></li>
+        <li><%= link_to 'Delete', item_path(@topic), :method => :delete, :"data-confirm" => "Are you sure?" %></li>
+        <% end %>
+        <li><%= link_to 'Reply', :anchor => 'reply' %></li>
+      </ul>
+    </div>
+  </div>
 
-<%= render :partial => 'topic_post', :locals => {:topic_post => @topic} %>
+  <h1><%= @topic.title %></h1>
+  <div class="body">
+    <%= @topic.text %>
+  </div>
+  <div class="footer">
+    <%= user_signature(@topic.user) %>
+  </div>
+</div>
+
 <%= render :partial => 'topic_post', :collection => @posts %>
 
 <div id="reply">
