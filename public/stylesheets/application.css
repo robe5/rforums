@@ -49,7 +49,7 @@ a.caution{
 }
 
 #login{
-	margin-top: 35px;
+	margin-top: 45px;
 	position:absolute;
 	right: 35px;
 }
@@ -66,10 +66,12 @@ a.caution{
 #breadcrump{
 	margin: 10px 0;
 	padding: 0;
+	color: #666;
+	text-transform: uppercase;
 }
 
 #main{
-	margin-top: 30px;
+	margin-top: 15px;
 }
 
 /* categories */
