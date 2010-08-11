@@ -1,0 +1,2 @@
+require 'rdiscount'
+require 'gfm'

@@ -15,7 +15,7 @@
   
   <%= image_tag gravatar(topic_post.user.email, 40), :class => 'avatar' %>
   <div class="body">
-    <div><%= topic_post.text %></div>
+    <div><%= markdown(topic_post.text) %></div>
     <div class="footer">
       <%= user_signature(topic_post.user) %>
     </div>    

@@ -251,7 +251,11 @@ a.caution{
 }
 
 .topic .body{
-  margin: 20px 10px;
+  margin: 10px 10px;
+}
+
+.topic .body p{
+	padding:0;
 }
 
 .topic .footer{
@@ -289,6 +293,10 @@ a.caution{
 	padding-left: 10px;
 }
 
+.post .body p{
+	padding:0;
+}
+
 .post .footer{
   border-top: 1px dashed #ddd;
   color: #aaa;
@@ -310,6 +318,22 @@ a.caution{
 #reply textarea{
   width: 500px;
   height: 100px;
+}
+#reply .help{
+	color: #666;
+	font-size: 11px;
+	margin: 5px 0;
+	padding: 0;
+}
+#reply .help a{
+	color: #555;
+	font-weight: bold;
+}
+#reply .not-logged{
+	background-color: #e5e5e5;
+}
+#reply .not-logged p{
+	padding: 10px;
 }
 /* End Reply
      

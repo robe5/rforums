@@ -21,7 +21,7 @@
 
   <h1><%= @topic.title %></h1>
   <div class="body">
-    <%= @topic.text %>
+    <%= markdown(@topic.text) %>
   </div>
   <div class="footer">
     <%= user_signature(@topic.user) %>
@@ -31,9 +31,18 @@
 <%= render :partial => 'topic_post', :collection => @posts %>
 
 <div id="reply">
-  <h3>Your reply</h3>
-  <%= form_for [@category, @topic, Post.new] do |form| %>
-    <%= form.text_area :text %><br />
-    <%= form.submit 'Submit', :class => "awesome small black" %>
+  <% if authorized? %>
+    <h3>Your reply</h3>
+    <%= form_for [@category, @topic, Post.new] do |form| %>
+      <%= form.text_area :text %><br />
+      <p class="help">
+        Posts are parsed with <%= link_to "markdown syntax", "http://daringfireball.net/projects/markdown/syntax" %> and a little <%= link_to "github flavor", "http://github.github.com/github-flavored-markdown/" %>.
+      </p>
+      <%= form.submit 'Submit', :class => "awesome small black" %>
+    <% end %>
+  <% else %>
+    <div class="not-logged">
+      <p><%= link_to "Login", login_path %> of <%= link_to "Sign up", register_path %> for an account to reply.</p>
+    </div>
   <% end %>
 </div>

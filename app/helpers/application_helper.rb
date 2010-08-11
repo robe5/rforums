@@ -44,6 +44,11 @@ module ApplicationHelper
       "#"
     end
   end
+
+  def markdown(text)
+    return unless text.present?
+    RDiscount.new(gfm(text)).to_html.html_safe
+  end
   
   def gravatar(email, size = nil)
     url = "http://www.gravatar.com/avatar/"
