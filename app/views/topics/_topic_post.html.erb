@@ -6,8 +6,7 @@
     <div class="admin-functions">
       <ul class="actions">
         <% if admin? %>
-        <li><%= link_to 'Edit', item_path(topic_post) %></li>
-        <li><%= link_to 'Delete', item_path(topic_post), :method => :delete, :"data-confirm" => "Are you sure?" %></li>
+        <li><%= link_to 'Delete', item_path(topic_post), :class => "caution", :method => :delete, :"data-confirm" => "Are you sure?" %></li>
         <% end %>
         <li><%= link_to 'Reply', :anchor => 'reply' %></li>
       </ul>

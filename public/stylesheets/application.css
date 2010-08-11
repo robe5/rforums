@@ -99,10 +99,11 @@ a.caution{
 }
 #categories .category-name .actions{
 	color: #7c7c7c;
-  font-size: 12px;
+  font-size: 11px;
 	position:absolute;
   top:3px;
   right: 0;
+	text-transform: uppercase;
 }
 #categories .category-name .actions a{
   font-size: 12px;
