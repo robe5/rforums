@@ -12,7 +12,7 @@
 <table class="data" width="100%" cellspacing="0" cellpadding="0">
   <thead>
     <tr>
-      <% if authorized? %><th></th><% end %>
+      <% if admin? %><th></th><% end %>
       <th width="50%">User</th>
       <th width="10%" class="center">Role</th>
       <th width="10%" class="center">Topics</th>
@@ -23,7 +23,7 @@
   <tbody>  
     <% @users.each do |user| %>
       <tr class="user-<%= user.role %> <%= cycle(:odd, :even) %>">
-        <% if authorized? %><td><%= link_to image_tag('edit.png'), edit_user_path(user) %></td><% end %>
+        <% if admin? %><td><%= link_to image_tag('edit.png'), edit_user_path(user) %></td><% end %>
         <td>
           <%= link_to user.name, user %>
         </td>
