@@ -15,6 +15,16 @@ module ApplicationHelper
         links << [@topic.title, [@category, @topic]]
       end
     end
+
+    if @users
+      links << ["Users", users_path]
+    end
+    
+    if @user
+      links << ["Users", users_path]
+      links << [@user.name, @user]
+    end
+    
     links.map do |link| 
       if links.size > 1 && link == links.last
         link.first

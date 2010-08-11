@@ -311,6 +311,41 @@ a.caution{
   height: 100px;
 }
 /* End Reply
+     
+/* Users */
+.search-box{
+  margin: 15px 0;
+}
+
+.user{
+}
+
+.user h2{
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.user .block{
+	margin: 10px 0;
+}
+
+#gravatar{
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  float:left;
+  padding: 10px;
+}
+
+#user-info{
+	margin: 0 0 0 140px;
+	padding: 0;
+}
+
+#user-info label{
+	display:block;
+	margin-bottom: 5px;
+}
+/* End Users */
 
 /* Forms */
 .block{

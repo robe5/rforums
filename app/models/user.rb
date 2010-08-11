@@ -4,9 +4,16 @@ require 'bcrypt'
 class User      
   include MongoMapper::Document
   
+  # info
   key :email,     String, :required => true
   key :name,      String, :required => true
   key :signature, String
+  
+  # stats
+  key :topics_count,  Integer, :default => 0
+  key :posts_count,   Integer, :default => 0
+  
+  # security
   key :admin, Boolean
   key :crypted_password, String
   key :reset_password_code, String
@@ -88,5 +95,17 @@ class User
   
   def update_items_cache
     Item.collection.update({:user_id => self.id}, "$set" => {"user_name" => self.name})
+  end
+  
+  def increment_topics(n = 1)
+    User.collection.update({:_id => self.id},
+      { "$inc" => {:topics_count => n}
+      })
+  end
+
+  def increment_posts(n = 1)
+    User.collection.update({:_id => self.id},
+      { "$inc" => {:posts_count => 1}
+      })
   end
 end

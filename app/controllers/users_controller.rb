@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
-  layout 'users'
+  layout 'application'
   before_filter :sign_in_required, :only => [:edit, :update]
   before_filter :require_right_user, :only => [:edit, :update]
 
   def index
     if params[:query]
-      @users = User.all(:conditions => {:name => /#{params[:query]}/i})
+      conditions = {:conditions => {:name => /#{params[:query]}/i}}
     else
-      @users = User.all
+      conditions = {}
     end
+    @users = User.all(conditions)
   end
   
   def show
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
+    render :layout => 'users'
   end
 
   def create
@@ -46,6 +48,7 @@ class UsersController < ApplicationController
   end
 
   def help
+    render :layout => 'users'
   end
   
   def recover
@@ -63,7 +66,7 @@ class UsersController < ApplicationController
     
   private
   def require_right_user
-    if current_user.id.to_s != params[:id]
+    if !admin? && current_user.id.to_s != params[:id]
       flash[:error] = "You cannot edit this user"
       redirect_to :action => :show, :id => params[:id]
     end

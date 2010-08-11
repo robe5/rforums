@@ -11,6 +11,10 @@ class Topic < Item
   # Validations
   validates_presence_of :category_id
 
+  # Callbacks
+  after_create :increment_user_topics
+  after_destroy :decrement_user_topics
+  
   def last_post_id
     @last_post_id ||= (posts.size > 0 ? posts.last.id : id)
   end
@@ -22,12 +26,22 @@ class Topic < Item
   def level
     0
   end
-
+  
+  private
   def increment(n = 1)
     return false unless n.is_a? Numeric
     Topic.collection.update({:_id => self.id},
       { "$inc" => {:post_count => n}, 
         "$set" => {:updated_at => Time.now}
       })
+  end
+  
+  # increments user topics counter
+  def increment_user_topics
+    user.increment_topics(1)
+  end
+  
+  def decrement_user_topics
+    user.increment_topics(-1)
   end
 end
