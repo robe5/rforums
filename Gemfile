@@ -4,7 +4,7 @@ gem 'rails', '3.0.0.rc'
 gem 'mongo_mapper'
 gem 'bson_ext'
 gem 'bcrypt-ruby'
-
+gem 'rdiscount', '1.6.5'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
