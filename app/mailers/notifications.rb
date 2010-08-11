@@ -12,4 +12,10 @@ class Notifications < ActionMailer::Base
 
     mail :to => user.email
   end
+  
+  #   en.notifications.new_user.subject
+  def new_user(user)
+    @user = user
+    mail :to => user.email
+  end
 end

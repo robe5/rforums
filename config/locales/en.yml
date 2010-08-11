@@ -6,3 +6,5 @@ en:
   notifications:
     password_recovery:
       subject: "[Forums] User recovery"
+    new_user:
+      subject: "[Forums] Welcome to Forums Community"

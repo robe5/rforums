@@ -25,6 +25,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       self.current_user = @user
+      Notifications.new_user(@user).deliver
+      flash[:success] = "Welcome to Forums Community"
       redirect_to root_path
     else
       flash[:error] = @user.errors.full_messages.to_sentence
