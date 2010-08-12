@@ -1,7 +1,3 @@
-<% content_for :page_title do %>
-  Manage users
-<% end %>
-
 <div class="search-box">
 <%= form_tag users_path, :method => 'get' do %>
   <%= text_field_tag :query, '', :placeholder => 'User name', :class => 'text' %>
