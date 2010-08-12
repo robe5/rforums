@@ -1,4 +1,4 @@
-<h1 class="page_title">New topic</h1>
+<h1 class="page_title">Edit topic</h1>
 <%- form_for [@category, @topic] do |form| -%>
   <%= render 'shared/error_messages', :target => @topic %>
   <ul id="new-topic">
@@ -10,15 +10,21 @@
       <li class="block">
         <%= form.label :level %>
         <%= form.select :level, [0,1,2,3] %>
+        <p class="help">
+          Posts with a level greater than 0 will be marked as <em>sticky</em> and displayed on top of the board.
+        </p>
       </li>
     <% end %>
     <li class="block">
       <%= form.label :text %>
       <%= form.text_area :text, :class => "text large" %>
+      <p class="help">
+        Posts are parsed with <%= link_to "markdown syntax", "http://daringfireball.net/projects/markdown/syntax" %> and a little <%= link_to "github flavor", "http://github.github.com/github-flavored-markdown/" %>.
+      </p>
     </li>
     <li class="block submit">
       <%= form.submit 'Create', :disable_with => 'Creating topic...', :class => "awesome small black" %>
-      or <%= link_to 'cancel', @category %>
+      or <%= link_to 'cancel', [@category, @topic] %>
     </li>
   </ul>
 <%- end -%>

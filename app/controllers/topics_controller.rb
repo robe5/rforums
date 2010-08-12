@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
   before_filter :find_category
-  before_filter :sign_in_required, :only => [:new, :create, :destroy]
-  before_filter :admin_required, :only => :destroy
+  before_filter :sign_in_required, :only => [:new, :create]
+  before_filter :admin_required, :only => [:edit, :update, :destroy]
   
   def index
     redirect_to @category
@@ -26,6 +26,22 @@ class TopicsController < ApplicationController
     else
       flash[:error] = @topic.errors.full_messages.to_sentence
       render :action => 'new'
+    end
+  end
+  
+  def edit
+    @topic = @category.topics.find!(params[:id])
+  end
+  
+  def update
+    @topic = @category.topics.find!(params[:id])
+
+    if @topic.update_attributes(params[:topic])
+      flash[:success] = "Topic #{@topic.title} updated"
+      redirect_to [@category, @topic]
+    else
+      flash[:error] = @topic.errors.full_messages.to_sentence
+      render :action => 'edit'
     end
   end
   

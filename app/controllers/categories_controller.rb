@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
   
   def show
     @category = Category.find!(params[:id])
-    @topics = @category.topics.paginate(:order => 'updated_at DESC', :per_page => 10, :page => params[:page])
+    @topics = @category.topics.paginate(:order => 'level DESC, updated_at DESC', :per_page => 10, :page => params[:page])
   end
   
   def create

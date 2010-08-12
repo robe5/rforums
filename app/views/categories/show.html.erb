@@ -10,7 +10,7 @@
   </thead>
   <tbody>  
     <% @topics.each do |topic| %>
-      <tr class="topic-<%= topic.level %> <%= cycle(:odd, :even) %>">
+      <tr class="topic-<%= topic.level > 0 ? 'sticky' : 'normal' %> <%= cycle(:odd, :even) %>">
         <td>
           <%= link_to topic.title, [@category, topic] %><br />
           <span class="info">Started by <strong><%= topic.user_name %></strong></span>

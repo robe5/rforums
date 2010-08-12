@@ -1,5 +1,6 @@
 class Topic < Item
   key :title, String, :required => true
+  key :level, Integer, :required => true, :default => 0
   
   # cached values
   key :post_count,  Integer, :default => 0
@@ -22,11 +23,7 @@ class Topic < Item
   def last_user_name
     @last_user_name ||= (posts.size > 0 ? posts.last.user_name : user_name)
   end
-  
-  def level
-    0
-  end
-  
+    
   private
   def increment(n = 1)
     return false unless n.is_a? Numeric

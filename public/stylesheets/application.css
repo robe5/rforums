@@ -9,6 +9,7 @@ body{
   font-size: 13px;
   margin:0;
 }
+
 h1,h2,h3,h4,h5,h6{
 	color: #333;
 	font-weight: normal;
@@ -18,12 +19,27 @@ a{
   text-decoration: none;
   color: #3084CA;
 }
+
 a:hover{
   color: #78B9E7;
 }
+
 a.caution{
 	color: #d81b21;
 }
+
+.help{
+	color: #666;
+	font-size: 11px;
+	margin: 5px 0;
+	padding: 0;
+}
+
+.help a{
+	color: #555;
+	font-weight: bold;
+}
+
 .content{
 	margin: 0 auto;
 	padding: 0 35px;
@@ -185,6 +201,9 @@ a.caution{
 .data .info strong{
   color: #434343;
 }
+.topic-sticky{
+	background: #ffecbe;
+}
 /* End Tables*/
 
 
@@ -323,16 +342,6 @@ a.caution{
 #reply textarea{
   width: 500px;
   height: 100px;
-}
-#reply .help{
-	color: #666;
-	font-size: 11px;
-	margin: 5px 0;
-	padding: 0;
-}
-#reply .help a{
-	color: #555;
-	font-weight: bold;
 }
 #reply .not-logged{
 	background-color: #e5e5e5;
