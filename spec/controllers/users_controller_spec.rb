@@ -145,16 +145,14 @@ describe UsersController do
   
   describe 'POST recover' do
     before(:each) do
-      @user = User.new(:name => "User", :email => "user@test.com", :password => 12341234, :password_confirmation => 12341234)
-      
+      @user = User.create(:name => "User", :email => "user@test.com", :password => "12341234", :password_confirmation => "12341234")
     end
     
-    context 'with a valid email' do
-      before(:each) do
-        User.expects(:first).with(:conditions => {:email => "user@test.com"}).returns(@user)
-        @user.stubs(:set_password_code!)
-      end
-      
+    after(:each) do
+      User.destroy_all
+    end
+    
+    context 'with a valid email' do      
       it "should set the password code" do
         @user.expects(:set_password_code!)
         post :recover, :email => "user@test.com"
@@ -175,7 +173,7 @@ describe UsersController do
         post :recover, :email => "user@test.com"
       end
     end
-    
+                                        
     context 'with an invalid email' do
       before(:each) do
         User.expects(:first).with(:conditions => {:email => "user@test.com"}).returns(nil)

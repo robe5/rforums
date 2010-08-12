@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   end
   
   def update
-    params[:user].except!(:admin) unless admin?
+    params[:user].except!(:admin) unless admin? or params[:user].nil?
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:success] = "User updated"

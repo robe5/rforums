@@ -20,7 +20,7 @@
         Started <%= pluralize(@user.topics_count, "topic", "topics") %> 
         and made <%= pluralize(@user.posts_count, "post", "posts") %>.
       </li>
-      <% if admin? || current_user.id == @user.id %>
+      <% if admin? || current_user == @user %>
       <li>
         <%= link_to "Edit", edit_user_path(@user) %>
       </li>
