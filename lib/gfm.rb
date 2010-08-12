@@ -10,6 +10,11 @@ def gfm(text)
     "{gfm-extraction-#{md5}}"
   end
 
+  # Auto-link URLs and emails
+  text.gsub!(/https?\:\/\/[^"\s\<\>]*[^.,;'">\:\s\<\>\)\]\!]/) do |url|
+    "<a href='" + url + "'>" + url + "</a>";
+  end
+
   # prevent foo_bar_baz from ending up with an italic word in the middle
   text.gsub!(/(^(?! {4}|\t)\w+_\w+_\w[\w_]*)/) do |x|
     x.gsub('_', '\_') if x.split('').sort.to_s[0..1] == '__'
