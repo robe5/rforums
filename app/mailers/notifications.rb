@@ -8,7 +8,7 @@ class Notifications < ActionMailer::Base
   #
   def password_recovery(user)
     @token = user.reset_password_code
-    @until_time = user.reset_password_code_until
+    @until_time = user.reset_password_code_until.localtime
 
     mail :to => user.email
   end

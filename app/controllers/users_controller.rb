@@ -56,6 +56,7 @@ class UsersController < ApplicationController
   
   def recover
     @user = User.first(:conditions => {:email => params[:email]})
+
     if @user
       @user.set_password_code!
       Notifications.password_recovery(@user).deliver

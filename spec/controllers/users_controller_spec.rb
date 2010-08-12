@@ -145,19 +145,14 @@ describe UsersController do
   
   describe 'POST recover' do
     before(:each) do
-      @user = User.create(:name => "User", :email => "user@test.com", :password => "12341234", :password_confirmation => "12341234")
+      @user = User.create!(:name => "User", :email => "user@test.com", :password => "12341234", :password_confirmation => "12341234")
     end
     
     after(:each) do
       User.destroy_all
     end
     
-    context 'with a valid email' do      
-      it "should set the password code" do
-        @user.expects(:set_password_code!)
-        post :recover, :email => "user@test.com"
-      end
-    
+    context 'with a valid email' do          
       it "should have a flash success message" do
         post :recover, :email => "user@test.com"
         flash.should have_key(:success)
