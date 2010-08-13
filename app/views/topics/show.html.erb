@@ -7,11 +7,11 @@
     </p>
     <div class="admin-functions">
       <ul class="actions">
-        <li><%= link_to 'Reply', :anchor => 'reply' %></li>
         <% if admin? %>
-        <li><%= link_to 'Edit', edit_category_topic_path(@category, @topic) %></li>
         <li><%= link_to 'Delete', item_path(@topic), :class => "caution", :method => :delete, :"data-confirm" => "Are you sure?" %></li>
+        <li><%= link_to 'Edit', edit_category_topic_path(@category, @topic) %></li>
         <% end %>
+        <li><%= link_to 'Reply', :anchor => 'reply' %></li>
       </ul>
     </div>
   </div>
