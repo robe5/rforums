@@ -45,6 +45,17 @@ module ApplicationHelper
     end
   end
 
+  def edit_item_path(item)
+    case item.class.to_s
+    when "Topic"
+      ['edit', @category, item]
+    when "Post"
+      ['edit', @category, @topic, item]
+    else
+      '#'
+    end
+  end
+
   def markdown(text)
     return unless text.present?
     RDiscount.new(gfm(text)).to_html.html_safe

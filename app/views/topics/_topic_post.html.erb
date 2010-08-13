@@ -1,5 +1,5 @@
-<div class="post">
-  <div class="meta" style="">
+<div id="post-<%= topic_post.id %>" class="post">
+  <div class="meta">
     <span class="user-role" style="display:none"><%= topic_post.user.role %></span>
     Posted by <strong><%= link_to topic_post.user.name, topic_post.user %></strong> 
     on <span class="timestamp"><%= topic_post.created_at.to_s(:long) %></span>
@@ -7,6 +7,7 @@
       <ul class="actions">
         <% if admin? %>
         <li><%= link_to 'Delete', item_path(topic_post), :class => "caution", :method => :delete, :"data-confirm" => "Are you sure?" %></li>
+	<li><%= link_to 'Edit', edit_item_path(topic_post) %></li>
         <% end %>
         <li><%= link_to 'Reply', :anchor => 'reply' %></li>
       </ul>
