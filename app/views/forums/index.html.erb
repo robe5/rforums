@@ -6,6 +6,7 @@
 <div id="forum-admin">
   <div class="actions">
     <%= link_to "Create category", "#", :id => "new-category", :class => "awesome small orange" %>
+    <%= link_to "Reordering categories", "#", :id => "reorder-category", :class => "awesome small orange" %>
     <%= link_to "Manage users", users_path, :class => "awesome small orange" %>
   </div>
   <div id="category-new-form" style="display:none">
@@ -40,21 +41,3 @@
     <% end %>
   </div>
 <% end %>
-
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('#categories').sortable({
-	axis:'y', 
-	handle: '.move-handle',
-	update: function(event, ui){
-		$.ajax({url: "/categories/order", type: 'POST', data: $(this).sortable('serialize'),
-		dataType: 'script'});
-	}
-    });
-    $('.category .action-reorder').live('click', function(evt){
-      evt.preventDefault();
-      $('.category .move-handle').toggle();
-    });
-  });
-</script>

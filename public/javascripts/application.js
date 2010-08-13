@@ -20,7 +20,7 @@ $(document).ready(function(){
 			.find('input[type=text]').first.focus();
 	});
 	
-$(this).parents('.category-update-form').hide();
+	$(this).parents('.category-update-form').hide();
 	
 	// Category's actions
 	$('.category').hover(function(){
@@ -28,5 +28,21 @@ $(this).parents('.category-update-form').hide();
 	}, function(){
 		$(this).find('.actions').hide();
 	});
-	
+
+	// Reordering categories
+    	$('#categories').sortable({
+        	axis:'y',
+	        handle: '.move-handle',
+	        update: function(event, ui){
+        	        $.ajax({url: "/categories/order", 
+				type: 'POST', 
+				data: $(this).sortable('serialize'),
+                		dataType: 'script'
+			});
+		}
+	});
+	$('#reorder-category').live('click', function(evt){
+		evt.preventDefault();
+		$('.category .move-handle').toggle();
+	});
 });

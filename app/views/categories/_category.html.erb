@@ -1,15 +1,14 @@
 <li id="category-<%= category.id %>" class="category">
-  <div class="move-handle" style="display:none">
-    <span>Move</span>
-  </div>
   <div class="category-name">
+    <span class="move-handle" style="display:none">
+      <%= image_tag('move.png') %>
+    </span>
     <%= link_to category do %>
       <%= category.name %>
       <span><%= category.description %></span>
     <% end %>
     <% if admin? %>
     <div class="actions" style="display:none">
-      <%= link_to "Reorder", "#", :class => "action-reorder" %> |
       <%= link_to "Edit", "#", :class => "action-edit", :'data-category' => "#{category.id}" %> |
       <%= link_to "Destroy", category, :method => :delete, :remote => true, :class => 'caution' %>
     </div>
