@@ -1,0 +1,21 @@
+<li class="block">
+  <%= form.label :title %>
+  <%= form.text_field :title, :class => "text large" %>
+</li>
+<% if admin? %>
+  <li class="block">
+    <%= form.label :level %>
+    <%= form.select :level, [0,1,2,3] %>
+    <p class="help">
+      Posts with a level greater than 0 will be marked as <em>sticky</em> and displayed on top of the board.
+    </p>
+  </li>
+<% end %>
+<li class="block">
+  <%= form.label :text %>
+  <%= form.text_area :text, :class => "text large" %>
+  <p class="help">
+    Posts are parsed with <%= link_to "markdown syntax", "http://daringfireball.net/projects/markdown/syntax" %> and a little <%= link_to "github flavor", "http://github.github.com/github-flavored-markdown/" %>.
+  </p>
+</li>
+

@@ -2,20 +2,7 @@
 <%- form_for [@category, @topic] do |form| -%>
   <%= render 'shared/error_messages', :target => @topic %>
   <ul id="new-topic">
-    <li class="block">
-      <%= form.label :title %>
-      <%= form.text_field :title, :class => "text large" %>
-    </li>
-    <% if admin? %>
-      <li class="block">
-        <%= form.label :level %>
-        <%= form.select :level, [0,1,2,3] %>
-      </li>
-    <% end %>
-    <li class="block">
-      <%= form.label :text %>
-      <%= form.text_area :text, :class => "text large" %>
-    </li>
+    <%= render form  %>
     <li class="block submit">
       <%= form.submit 'Create', :disable_with => 'Creating topic...', :class => "awesome small black" %>
       or <%= link_to 'cancel', @category %>
