@@ -1,5 +1,5 @@
-<div class="topic topic-<%= @topic.level > 0 ? 'sticky' : 'normal' %>">
-  <div class="meta">
+<div class="topic">
+  <div class="meta topic-<%= @topic.level > 0 ? 'sticky' : 'normal' %>">
     <%= image_tag gravatar(@topic.user.email, 40), :class => 'avatar' %>
     <h4><%= link_to @topic.user_name, user_path(@topic.user_id) %></h4>
     <p class="date">
