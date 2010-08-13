@@ -16,6 +16,7 @@ Forums::Application.routes.draw do |map|
   #   resources :products
   resources :forums
   resources :categories do
+    post :order, :on => :collection
     resources :topics do
       resources :posts
     end

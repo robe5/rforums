@@ -40,3 +40,21 @@
     <% end %>
   </div>
 <% end %>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#categories').sortable({
+	axis:'y', 
+	handle: '.move-handle',
+	update: function(event, ui){
+		$.ajax({url: "/categories/order", type: 'POST', data: $(this).sortable('serialize'),
+		dataType: 'script'});
+	}
+    });
+    $('.category .action-reorder').live('click', function(evt){
+      evt.preventDefault();
+      $('.category .move-handle').toggle();
+    });
+  });
+</script>

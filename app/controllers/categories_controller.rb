@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController  
   before_filter :authorized?, :only => [:create, :update, :destroy]
-  before_filter :admin_required, :only => [ :create ]
+  before_filter :admin_required, :only => [ :create, :order ]
   
   def index
     redirect_to root_path
@@ -29,6 +29,21 @@ class CategoriesController < ApplicationController
       flash[:success] = "Category #{@category.name} was successfully updated"
     else
       flash[:success] = @category.errors.full_messages.to_sentence
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def order
+    if params[:category].present?
+      params[:category].each_with_index do |c_id, i|
+	category = Category.find(c_id)
+        category.update_attributes(:position => i)
+      end
+      flash.now[:success] = "Categories was successfully ordered"
+    else
+      flash.now[:error] = "Categories could not be reordered"
     end
     respond_to do |format|
       format.js

@@ -1,0 +1,6 @@
+<% if flash[:success].present? %>
+  Flasher.notice('<%= flash[:success] %>');
+<% end %>
+<% if flash[:error].present? %>
+  Flasher.error('<%= flash[:error] %>');
+<% end %>

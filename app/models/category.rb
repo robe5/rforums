@@ -3,6 +3,7 @@ class Category
   
   key :name, String, :required => true
   key :description, String
+  key :position, Integer, :default => 0
   
   key :user_id,   ObjectId
   
