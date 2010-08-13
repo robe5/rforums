@@ -1,4 +1,5 @@
 <% if flash[:success].present? %>
+  $('#categories, #categories .category').effect('highlight');
   Flasher.notice('<%= flash[:success] %>');
 <% end %>
 <% if flash[:error].present? %>

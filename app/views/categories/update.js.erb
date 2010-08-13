@@ -2,5 +2,5 @@
   $('#category-<%= @category.id %>').replaceWith('<%= escape_javascript(render @category) %>');
   Flasher.notice('<%= flash[:success] %>');
 <% else %>
-  Flasher.notice('<%= flash[:error] %>');
+  Flasher.error('<%= flash[:error] %>');
 <% end %>

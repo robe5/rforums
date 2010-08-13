@@ -94,25 +94,38 @@ a.caution{
   padding: 0;
 	width: 550px;
 }
+
 #categories .category{
+	background-color: #fff;
   border-bottom: 1px solid #ccc;
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
+
+#categories .move-handle{
+	background-color: #fff;
+	cursor:move;
+	float:left; 
+	margin: 2px 5px 0 0;
+}
+
 #categories .category-name{
 	position: relative;
 }
+
 #categories .category-name > a{
 	display: block;
   font-size: 15px;
 	line-height: 20px;
 }
+
 #categories .category-name > a span{
   color: #7C7C7C;
   display:block;
   font-size: 12px;
   font-style: normal;
 }
+
 #categories .category-name .actions{
 	color: #7c7c7c;
   font-size: 11px;
@@ -121,6 +134,7 @@ a.caution{
   right: 0;
 	text-transform: uppercase;
 }
+
 #categories .category-name .actions a{
   font-size: 12px;
 }

@@ -1,8 +1,8 @@
 <li id="category-<%= category.id %>" class="category">
   <div class="category-name">
-    <span class="move-handle" style="display:none">
-      <%= image_tag('move.png') %>
-    </span>
+    <div class="move-handle">
+      <%= image_tag('handle.png') %>
+    </div>
     <%= link_to category do %>
       <%= category.name %>
       <span><%= category.description %></span>
@@ -10,7 +10,7 @@
     <% if admin? %>
     <div class="actions" style="display:none">
       <%= link_to "Edit", "#", :class => "action-edit", :'data-category' => "#{category.id}" %> |
-      <%= link_to "Destroy", category, :method => :delete, :remote => true, :class => 'caution' %>
+      <%= link_to "Destroy", category, :class => 'caution', :method => :delete, :remote => true, :'data-confirm' => "Are you sure you want destroy this category?" %>
     </div>
     <% end %>
   </div>
