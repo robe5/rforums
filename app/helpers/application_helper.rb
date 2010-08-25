@@ -75,4 +75,9 @@ module ApplicationHelper
       user.name
     end
   end
+
+  def analytics
+    return unless Rails.env == 'production'
+    render :partial => 'shared/analytics'
+  end
 end
