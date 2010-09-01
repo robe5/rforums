@@ -1,8 +1,10 @@
 <li id="category-<%= category.id %>" class="category">
   <div class="category-name">
+    <% if admin? %>
     <div class="move-handle">
       <%= image_tag('handle.png') %>
     </div>
+    <% end %>
     <%= link_to category do %>
       <%= category.name %>
       <span><%= category.description %></span>
