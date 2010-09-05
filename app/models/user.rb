@@ -1,6 +1,6 @@
-# uses bcrypt-ruby gem for password hashing be sure to config.gem it
 require 'digest/sha1'
 require 'bcrypt'
+
 class User      
   include MongoMapper::Document
   

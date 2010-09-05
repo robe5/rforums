@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     if @post.save
       flash[:success] = "Post created"
 
-      redirect_to category_topic_path(@category, @topic, :anchor => "topic-#{@post.id}")
+      redirect_to category_topic_path(@category, @topic, :anchor => "post-#{@post.id}")
     else
       flash[:error] = @topic.errors.full_messages.to_sentence
       redirect_to category_topic_path(@category, @topic, :anchor => 'reply')
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
     @post.destroy
     flash[:success] = "Post deleted successfully"
     
-    redirect_to category_topic_path(@category, @topic, :page => params[:page])
+    redirect_to category_topic_path(@category, @topic)
   end
    
   private

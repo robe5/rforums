@@ -22,8 +22,10 @@ Forums::Application.routes.draw do |map|
     end
   end
   resources :users do
-    get :help
-    post :recover
+    collection do
+      get :help
+      post :recover
+    end
   end
   resources :sessions do
     get :recovery

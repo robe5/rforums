@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController  
-  before_filter :authorized?, :only => [:create, :update, :destroy]
-  before_filter :admin_required, :only => [ :create, :order ]
+  before_filter :admin_required, :only => [ :create, :order, :update, :destroy ]
   
   def index
     redirect_to root_path
@@ -13,11 +12,13 @@ class CategoriesController < ApplicationController
   
   def create
     @category = Category.new(params[:category])
+
     if @category.save
       flash[:success] = "Category #{@category.name} was successfully created"
     else
       flash[:error] = @category.errors.full_messages.to_sentence
     end
+
     respond_to do |format|
       format.js
     end
@@ -38,7 +39,7 @@ class CategoriesController < ApplicationController
   def order
     if params[:category].present?
       params[:category].each_with_index do |c_id, i|
-	category = Category.find(c_id)
+	      category = Category.find(c_id)
         category.update_attributes(:position => i)
       end
       flash.now[:success] = "Categories was successfully ordered"

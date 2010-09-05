@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Forums</title>
+  <title>Forums Community</title>
   <%= stylesheet_link_tag 'reset', 'application', 'buttons' %>
   <%= javascript_include_tag 'jquery-1.4.2.min.js', 'jquery-ui-1.8.4.custom.min.js', 'rails.jquery.js', 'flasher.js', 'application' %>
   <%= csrf_meta_tag %>
@@ -10,7 +10,7 @@
 <body>
   <div id="header">
     <div class="content">
-      <h1 class="page_title">Forums Comunity</h1>
+      <h1 class="page_title">Forums Community</h1>
       <div id="login">
         <% if signed_in? %>
           Logged in as <%= link_to current_user.name, edit_user_path(current_user.id) %> | <%= link_to "Logout", logout_path %>
