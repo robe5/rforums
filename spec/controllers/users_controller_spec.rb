@@ -138,8 +138,13 @@ describe UsersController do
   
   describe 'GET help' do
     it "should be success" do
-      get 'help'
+      get :help
       response.should be_success
+    end
+    
+    it "should render the show template" do
+      get :help
+      response.should render_template('users/help')
     end
   end
   
@@ -181,8 +186,9 @@ describe UsersController do
       
       it "should redirect to help user path" do
         post :recover, :email => "user@test.com"
-        response.should redirect_to(help_user_path)
+        response.should redirect_to(help_users_path)
       end
     end
   end
+  
 end

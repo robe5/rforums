@@ -28,7 +28,7 @@ Forums::Application.routes.draw do |map|
     end
   end
   resources :sessions do
-    get :recovery
+    get :recovery, :on => :collection
   end
   # Sample resource route with options:
   #   resources :products do

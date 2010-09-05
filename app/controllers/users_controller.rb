@@ -64,7 +64,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       flash[:error] = "Your account could not be found"
-      redirect_to help_user_path
+      redirect_to help_users_path
     end
   end
     

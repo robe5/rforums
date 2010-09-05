@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   layout 'users'
   
+  def new
+  end
+  
   def create
     @user = User.authenticate(params[:email], params[:password])
     if @user
