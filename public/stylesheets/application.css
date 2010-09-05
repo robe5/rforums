@@ -480,3 +480,25 @@ textarea.large{
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db72f', endColorstr='#4e7d0e');
 }
 /* End Notices */
+
+/* Pagination */
+#pagination{
+	padding: 10px 0;
+	text-align: right;
+}
+
+#pagination .page{
+ 	padding: 0 2px;
+}
+
+#pagination .page a{
+	border: 1px solid #3084ca;
+	padding: 1px 4px;
+}
+#pagination .page a{
+	border-color: #78B9E7;
+}
+#pagination .current{
+	font-weight: bold;
+	padding: 2px 5px;
+}

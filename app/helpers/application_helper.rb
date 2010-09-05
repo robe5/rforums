@@ -56,6 +56,22 @@ module ApplicationHelper
     end
   end
 
+  def paginator(object, opts = {})
+    return unless object.respond_to?(:paginator)
+    paginator = object.paginator
+    parts = []
+    1.upto(paginator.total_pages) do |page|
+      if page == paginator.current_page
+        parts << content_tag(:span, page, :class => 'page current')
+      else
+        parts << content_tag(:span, link_to(page, "?page=#{page}"), :class => 'page')
+      end
+    end
+    parts.unshift content_tag(:span, link_to('Preview', "?page=1"), :class => 'page') unless paginator.current_page == 1
+    parts << content_tag(:span, link_to('Next', "?page=#{paginator.total_pages}"), :class => 'page') unless paginator.current_page == paginator.total_pages
+    parts.join("").html_safe
+  end
+
   def markdown(text)
     return unless text.present?
     RDiscount.new(gfm(text)).to_html.html_safe

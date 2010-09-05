@@ -27,6 +27,10 @@
 
 <%= render :partial => 'topic_post', :collection => @posts %>
 
+<div id="pagination">
+<%= paginator(@posts) %>
+</div>
+
 <div id="reply">
   <% if authorized? %>
     <h3>Your reply</h3>

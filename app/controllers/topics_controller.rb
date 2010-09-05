@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
   
   def show
     @topic = @category.topics.find!(params[:id])
-    @posts = @topic.posts.paginate(:per_page => 10, :page => params[:page])
+    @posts = @topic.posts.paginate(:per_page => 20, :page => params[:page])
   end
   
   def new
