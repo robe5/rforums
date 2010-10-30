@@ -22,6 +22,6 @@ bundle install
 
 rails s
 
-Demo:
+# Demo
 
 There is a demo instance in heroku: http://rforums.heroku.com
