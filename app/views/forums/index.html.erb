@@ -1,0 +1,42 @@
+<% if User.count == 0 %>
+<p>There are not any users yet. <%= link_to "Create one", new_user_path %> first</p>
+<% end %>
+
+<% if admin? %>
+<div id="forum-admin">
+  <div class="actions">
+    <%= link_to "Create category", "#", :id => "new-category", :class => "awesome small orange" %>
+    <%= link_to "Manage users", users_path, :class => "awesome small orange" %>
+  </div>
+  <div id="category-new-form" style="display:none">
+    <%= form_for Category.new, :remote => true do |form| %>
+      <ul>
+        <%= render :partial => 'categories/form', :locals => {:form => form} %>
+        <li>
+          <%= form.submit "Create", :class => "awesome small black" %>
+          or
+          <%= link_to "Cancel", "#", :id => "cancel-new-category" %>
+        </li>
+      </ul>
+    <% end %> 
+  </div>
+</div>
+<% end %>
+
+<% if @categories.size == 0 %>
+  <p>There are not any categories yet.</p>
+<% else %>
+  <ul id="categories">
+    <%= render @categories %>
+  </ul>
+  <div id="recent-posts">
+    <h3>Recent Posts</h3>
+    <% if @items.size == 0 %>
+      <p>There are not any posts yet.</p>
+    <% else %>
+      <ul id="posts">
+        <%= render @items %>
+      </ul>
+    <% end %>
+  </div>
+<% end %>

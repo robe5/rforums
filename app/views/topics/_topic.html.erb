@@ -1,0 +1,5 @@
+<li class="post">
+  <%= link_to topic.title, category_topic_path(topic.category, topic) %>
+  <br />
+  <span class="info"><strong><%= topic.user_name %></strong> started it on <%= topic.created_at.to_s(:short) %></span>
+</li>

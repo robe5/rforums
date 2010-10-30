@@ -1,0 +1,6 @@
+TODO
+titulos en html head
+
+BUG
+Editar usuario: Se puede poner password sin confirmacion y funciona
+root_path: al crear category se muestran todos los enlaces de admin

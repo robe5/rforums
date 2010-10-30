@@ -1,0 +1,5 @@
+<li class="post">
+  <%= link_to post.topic.title, category_topic_path(post.topic.category, post.topic, :anchor => "post-#{post.id}") %>
+  <br />
+  <span class="info"><strong><%= post.user_name %></strong> posted on <%= post.created_at.to_s(:short) %></span>
+</li>

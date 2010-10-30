@@ -1,0 +1,17 @@
+<h1 class="page_title">Recover Password</h1>
+
+<div id="user-info">
+<%= form_tag recover_users_path do %>
+  <ul id="">
+    <li>
+      <%= label_tag :email %>
+      <%= text_field_tag :email, '', :class => 'text' %>
+    </li>
+
+    <li class="submit">
+      <%= submit_tag 'Recover', :class => 'awesome small black' %>
+      or <%= link_to 'Cancel', root_path %>
+    </li>
+  </ul>
+<% end %>
+</div>

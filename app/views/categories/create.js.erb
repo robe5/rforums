@@ -1,0 +1,8 @@
+<% if @category.persisted? %>
+  $('#category-new-form').hide().find('input[type=text]').attr('value','');
+  $('#categories').append('<%= escape_javascript(render @category) %>');
+  Flasher.notice('<%= flash[:success] %>');
+<% else %>
+  Flasher.notice('<%= flash[:error] %>');
+<% end %>
+

@@ -1,0 +1,41 @@
+<div class="search-box">
+<%= form_tag users_path, :method => 'get' do %>
+  <%= text_field_tag :query, '', :placeholder => 'User name', :class => 'text' %>
+  <%= submit_tag 'Search', :class => "awesome small black" %>
+<% end %>
+</div>
+
+<table class="data" width="100%" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <% if admin? %><th></th><% end %>
+      <th width="50%">User</th>
+      <th width="10%" class="center">Role</th>
+      <th width="10%" class="center">Topics</th>
+      <th width="10%" class="center">Posts</th>
+      <th width="20%">Created at</th>
+    </tr>
+  </thead>
+  <tbody>  
+    <% @users.each do |user| %>
+      <tr class="user-<%= user.role %> <%= cycle(:odd, :even) %>">
+        <% if admin? %><td><%= link_to image_tag('edit.png'), edit_user_path(user) %></td><% end %>
+        <td>
+          <%= link_to user.name, user %>
+        </td>
+        <td class="center info">
+            <%= user.role %>
+        </td>
+        <td class="center info">
+          <%= user.topics_count %>
+        </td>
+        <td class="center info">
+          <%= user.posts_count %>
+        </td>
+        <td class="info">
+          <%= user.created_at.to_s(:long) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

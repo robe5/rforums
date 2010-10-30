@@ -1,0 +1,19 @@
+<h1 class="page_title">Edit post</h1>
+<%- form_for [@category, @topic, @post] do |form| -%>
+  <%= render 'shared/error_messages', :target => @post %>
+  <ul id="edit-post">
+    <li class="block">
+      <%= form.label :text %>
+      <%= form.text_area :text, :class => "text large" %>
+      <p class="help">
+        Posts are parsed with <%= link_to "markdown syntax", "http://daringfireball.net/projects/markdown/syntax" %> and a little <%= link_to "github flavor", "http://github.github.com/github-flavored-markdown/" %>.
+      </p>
+    </li>
+    <li class="block submit">
+      <%= form.submit 'Update', :disable_with => 'Updating topic...', :class => "awesome small black" %>
+      or <%= link_to 'cancel', category_topic_path(@category, @topic, :anchor => "post-#{@post.id}") %>
+    </li>
+  </ul>
+<%- end -%>
+</div>
+

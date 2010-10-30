@@ -1,0 +1,49 @@
+<div class="topic">
+  <div class="meta topic-<%= @topic.level > 0 ? 'sticky' : 'normal' %>">
+    <%= image_tag gravatar(@topic.user.email, 40), :class => 'avatar' %>
+    <h4><%= link_to @topic.user_name, user_path(@topic.user_id) %></h4>
+    <p class="date">
+      <span class="timestamp"><%= @topic.created_at.to_s(:long) %></span>
+    </p>
+    <div class="admin-functions">
+      <ul class="actions">
+        <% if admin? %>
+        <li><%= link_to 'Delete', item_path(@topic), :class => "caution", :method => :delete, :"data-confirm" => "Are you sure?" %></li>
+        <li><%= link_to 'Edit', edit_category_topic_path(@category, @topic) %></li>
+        <% end %>
+        <li><%= link_to 'Reply', :anchor => 'reply' %></li>
+      </ul>
+    </div>
+  </div>
+
+  <h1><%= @topic.title %></h1>
+  <div class="body">
+    <%= markdown(@topic.text) %>
+  </div>
+  <div class="footer">
+    <%= user_signature(@topic.user) %>
+  </div>
+</div>
+
+<%= render :partial => 'topic_post', :collection => @posts %>
+
+<div id="pagination">
+<%= paginator(@posts) %>
+</div>
+
+<div id="reply">
+  <% if authorized? %>
+    <h3>Your reply</h3>
+    <%= form_for [@category, @topic, Post.new] do |form| %>
+      <%= form.text_area :text %><br />
+      <p class="help">
+        Posts are parsed with <%= link_to "markdown syntax", "http://daringfireball.net/projects/markdown/syntax" %> and a little <%= link_to "github flavor", "http://github.github.com/github-flavored-markdown/" %>.
+      </p>
+      <%= form.submit 'Submit', :class => "awesome small black" %>
+    <% end %>
+  <% else %>
+    <div class="not-logged">
+      <p><%= link_to "Login", login_path %> of <%= link_to "Sign up", register_path %> for an account to reply.</p>
+    </div>
+  <% end %>
+</div>

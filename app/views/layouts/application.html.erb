@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Forums Community</title>
+  <%= stylesheet_link_tag 'reset', 'application', 'buttons' %>
+  <%= javascript_include_tag 'jquery-1.4.2.min.js', 'jquery-ui-1.8.4.custom.min.js', 'rails.jquery.js', 'flasher.js', 'application' %>
+  <%= csrf_meta_tag %>
+  <%= analytics %>
+</head>
+<body>
+  <div id="header">
+    <div class="content">
+      <h1 class="page_title">Forums Community</h1>
+      <div id="login">
+        <% if signed_in? %>
+          Logged in as <%= link_to current_user.name, edit_user_path(current_user.id) %> | <%= link_to "Logout", logout_path %>
+        <% else %>
+          <%= link_to 'register', register_path %> | <%= link_to 'login', login_path %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <div id="wrapper" class="content">
+    <div id="breadcrump">
+      <%= breadcrumps.join(" &raquo; ").html_safe %>
+    </div>
+    <div id="main">
+      <%= yield %>
+    </div>
+  </div>
+
+  <div id="footer" class="content">
+    <!--<%= link_to "sourceCode", '#' %> | <%= link_to "theAutor", "" %>-->
+  </div>
+
+  <%= render :partial => 'shared/notices' %>
+</body>
+</html>

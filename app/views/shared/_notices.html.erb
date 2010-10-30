@@ -1,0 +1,11 @@
+<div id="flash_notice">
+  <div id="flash_notice_wrapper">
+    <div id="flasherrors" class="flashmessage" style="display:none"></div>
+    <div id="flashnotice" class="flashmessage" style="display:none"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  <% if flash[:success] %>Flasher.notice("<%= flash[:success] %>.");<% end %>
+  <% if flash[:error] %>Flasher.error("<%= flash[:error] %>.");<% end %>
+</script>

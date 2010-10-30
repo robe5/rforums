@@ -1,0 +1,21 @@
+<h1 class="page_title">Login</h1>
+
+<p>Don't have an account? <%= link_to "Register here", register_path %></p>
+
+<%= form_tag sessions_path do %>
+  <%= render :partial => 'shared/error_messages', :target => @user if @user %>
+  <ul id="register">
+    <li>
+      <%= label_tag 'email', 'Email' %>
+      <%= text_field_tag :email, "", :class => "text", :tabindex => 1 %>
+    </li>
+    <li>
+      <%= label_tag 'password', "Password &ndash; #{link_to 'I forgot my password', help_users_path}".html_safe %>
+      <%= password_field_tag :password, "", :class => "text", :tabindex => 2 %>
+    </li>
+    <li class="submit">
+      <%= submit_tag 'Sign In', :disable_with => 'Signing you in...', :class => "awesome small black" %>
+      or <%= link_to 'Cancel', root_path %>
+    </li>
+  </ul>
+<% end %>

@@ -1,0 +1,31 @@
+<div class="" style="margin: 10px 0">
+  <%= link_to "Create new topic", new_category_topic_path(@category), :class => 'awesome medium orange' %>
+</div>
+
+<table class="data" width="100%" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th width="70%">Title</th>
+      <th width="10%" class="center">Replies</th>
+      <th width="20%">Lastest Post</th>
+    </tr>
+  </thead>
+  <tbody>  
+    <% @topics.each do |topic| %>
+      <tr class="topic-<%= topic.level > 0 ? 'sticky' : 'normal' %> <%= cycle(:odd, :even) %>">
+        <td>
+          <%= link_to topic.title, [@category, topic] %><br />
+          <span class="info">Started by <strong><%= topic.user_name %></strong></span>
+        </td>
+        <td class="center"><%= topic.post_count %></td>
+        <td>
+          <%= link_to distance_of_time_in_words_to_now(topic.updated_at), category_topic_path(topic.category, topic, :anchor => "post-#{topic.last_post_id}") %><br />
+          <span class="info">by <strong><%= topic.last_user_name %></strong></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div id="pagination">
+  <%= paginator(@topics) %>
+</div>

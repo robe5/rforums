@@ -1,0 +1,30 @@
+<div class="user">   
+  <div id="gravatar">
+    <%= image_tag gravatar(@user.email, 100), :width => 100, :height => 100 %>
+  </div>
+                  
+  <div id="user-info">
+    <ul id="">
+      <li class="block">
+        <h2><%= @user.name %></h2>
+        <%= @user.role %>
+      </li>
+      <% if @user.signature.present? %>
+      <li class="block">
+        <strong>Signature</strong><br />
+        <%= @user.signature %>
+      </li>
+      <% end %>
+      <li class="block">
+        <strong>Stats</strong><br />
+        Started <%= pluralize(@user.topics_count, "topic", "topics") %> 
+        and made <%= pluralize(@user.posts_count, "post", "posts") %>.
+      </li>
+      <% if admin? || current_user == @user %>
+      <li>
+        <%= link_to "Edit", edit_user_path(@user) %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

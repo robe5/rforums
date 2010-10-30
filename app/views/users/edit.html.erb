@@ -1,0 +1,48 @@
+<div class="user">
+  <div id="gravatar">
+    <%= image_tag gravatar(@user.email, 100), :width => 100, :height => 100 %>
+  </div>
+                  
+  <div id="user-info">
+  <%- form_for @user do |form| -%>
+    <%= render "shared/error_messages", :target => @user %>
+    <ul id="">
+      <li class="block">
+        <%= form.label :name %>
+        <%= form.text_field :name, :class => 'text' %>
+      </li>
+      <li class="block">
+        <%= form.label :email %>
+        <%= form.text_field :email, :class => 'text' %>
+      </li>
+      <% if admin? %>
+      <li class="block">
+        <%= form.label :admin, "Role" %>
+        <% if current_user.id == @user.id %>
+          <%= @user.role %>
+        <% else %>
+          <%= form.select :admin, options_for_select([["member", 0],["admin", 1]], (@user.admin ? 1 : 0)) %>
+        <% end %>
+      </li>
+      <% end %>
+      <li class="block">
+        <%= form.label :signature %>
+        <%= form.text_area :signature, :rows => 3, :class => 'text' %>
+      </li>
+      <li class="block">
+        <%= form.label :password %>
+        <%= form.password_field :password, :class => 'text' %>
+      </li>
+      <li class="block">
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation, :class => 'text' %>
+      </li>
+    
+      <li class="submit block">
+        <%= submit_tag 'Save', :disable_with => 'Signing you up...', :class => 'awesome small black' %>
+        or <%= link_to 'Cancel', @user %>
+      </li>
+    </ul>
+  <%- end -%>
+  </div>
+</div>
