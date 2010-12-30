@@ -1,17 +1,17 @@
-development: 
+development:
   database: forums
   host: localhost
   port: 27017
-    
+
 test:
   database: forums_test
   host: localhost
   port: 27017
 
 production:
-  database: forums
-  host: flame.mongohq.com
-  port: 27088
-  authentication: true
-  user: admin
-  password: af7mip9vet
+  database: ENV['MONGO_DATABASE']
+  host: ENV['MONGO_HOST']
+  port: ENV['MONGO_PORT']
+  authentication: ENV['MONGO_AUTHENTICATION']
+  user: ENV['MONGO_USER']
+  password: ENV['MONGO_PASSWORD']
