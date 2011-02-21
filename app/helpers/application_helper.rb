@@ -58,6 +58,7 @@ module ApplicationHelper
 
   def paginator(object, opts = {})
     return unless object.respond_to?(:paginator)
+    return if object.paginator.total_pages == 0
     paginator = object.paginator
     parts = []
     1.upto(paginator.total_pages) do |page|
