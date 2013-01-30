@@ -8,7 +8,6 @@ describe Notifications do
         :reset_password_code => "43fe8c150a0f6e91ed7c392d2d486149c20fe4be",
         :reset_password_code_until => @time)
       Notifications.password_recovery(@user)
-
     end
 
     it "renders the headers" do

@@ -5,6 +5,7 @@ describe Topic do
     @user = create(:user)
     @category = create(:category)
   end
+
   before(:each) do
     @valid_attributes = {
       :title => "topic 1",
