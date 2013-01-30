@@ -10,10 +10,10 @@ describe PostsController do
   end
   
   after(:all) do
-    Category.destroy_all
-    Topic.destroy_all
-    Post.destroy_all
-    User.destroy_all
+    Category.delete_all
+    Topic.delete_all
+    Post.delete_all
+    User.delete_all
   end
   
   describe "POST create" do
@@ -24,7 +24,7 @@ describe PostsController do
     
     it "should redirect to the topic with anchor" do
       post :create, :category_id => @category.id, :topic_id => @topic.id, :post => {:text => "text"}
-      response.should redirect_to(category_topic_path(@category, @topic, :anchor => "post-#{Post.last.id}"))
+      response.should redirect_to(category_topic_path(@category, @topic, :anchor => "post-#{assigns[:post].id}"))
     end    
   end
   

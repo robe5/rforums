@@ -1,11 +1,16 @@
 require 'spec_helper'
 
 describe Post do
+  before(:all) do
+    @user = create(:user)
+    @topic = create(:topic)
+  end
+
   before(:each) do
     @valid_attributes = {
       :text => "text",
-      :user_id => "4c5dd55b08f68c06f1000007",
-      :topic_id => "4c5dd5b408f68c06f1000008"
+      :user_id => @user.id,
+      :topic_id => @topic.id
     }
     @post = Post.new
   end

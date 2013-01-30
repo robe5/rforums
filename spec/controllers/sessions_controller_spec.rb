@@ -4,7 +4,7 @@ describe SessionsController do
   render_views
   
   before(:all) do
-    @user = User.create!(:email => "a#{Time.now.to_i.to_s}@a.com", :name => "Test", :password => "12341234", :password_confirmation => "12341234")
+    @user = create(:user)
   end
   
   describe 'GET index' do

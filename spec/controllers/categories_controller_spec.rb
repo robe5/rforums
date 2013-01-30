@@ -4,7 +4,7 @@ describe CategoriesController do
   render_views
 
   after(:all) do
-    Category.destroy_all
+    Category.delete_all
   end
   
   describe "GET index" do

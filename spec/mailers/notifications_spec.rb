@@ -8,16 +8,17 @@ describe Notifications do
         :reset_password_code => "43fe8c150a0f6e91ed7c392d2d486149c20fe4be",
         :reset_password_code_until => @time)
       Notifications.password_recovery(@user)
+
     end
 
     it "renders the headers" do
       mail.subject.should eq("[Forums] User recovery")
       mail.to.should eq(["to@test.com"])
-      mail.from.should eq(["forums@forums.local"])
+      mail.from.should eq(["robe5.agf@gmail.com"])
     end
 
     it "renders the body" do
-      mail.body.encoded.should match(recovery_session_url(:token => @token, :host => 'localhost'))
+      mail.body.encoded.should match(recovery_sessions_url(:token => @token))
     end
     
     it "renders the until time" do

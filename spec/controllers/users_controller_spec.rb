@@ -160,7 +160,7 @@ describe UsersController do
     context 'with a valid email' do          
       it "should have a flash success message" do
         post :recover, :email => "user@test.com"
-        flash.should have_key(:success)
+        flash.should be_key(:success)
       end
       
       it "should redirect to root path" do
@@ -181,7 +181,7 @@ describe UsersController do
 
       it "should have a flash error message" do
         post :recover, :email => "user@test.com"
-        flash.should have_key(:error)
+        flash.should be_key(:error)
       end
       
       it "should redirect to help user path" do

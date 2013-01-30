@@ -1,5 +1,6 @@
 <h1 class="page_title">New topic</h1>
-<%- form_for [@category, @topic] do |form| -%>
+
+<%= form_for [@category, @topic] do |form| %>
   <%= render 'shared/error_messages', :target => @topic %>
   <ul id="new-topic">
     <%= render form  %>
@@ -8,5 +9,4 @@
       or <%= link_to 'cancel', @category %>
     </li>
   </ul>
-<%- end -%>
-</div>
+<% end %>

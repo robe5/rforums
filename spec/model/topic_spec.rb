@@ -1,12 +1,16 @@
 require 'spec_helper'
 
 describe Topic do
+  before(:all) do
+    @user = create(:user)
+    @category = create(:category)
+  end
   before(:each) do
     @valid_attributes = {
       :title => "topic 1",
       :text => "text",
-      :user_id => "4c5dd55b08f68c06f1000007",
-      :category_id => "4c5dd5b408f68c06f1000008"
+      :user_id => @user.id,
+      :category_id => @category.id
     }
     @topic = Topic.new
   end
@@ -39,7 +43,7 @@ describe Topic do
   it "should increment its posts count" do
     @topic = Topic.create(@valid_attributes)
     lambda{
-      @topic.increment(1)
+      @topic.send :increment, 1
       @topic.reload
     }.should change(@topic, :post_count).by(1)
   end
@@ -47,7 +51,7 @@ describe Topic do
   it "should decrement its posts count" do
     @topic = Topic.create(@valid_attributes)
     lambda{
-      @topic.increment(-1)
+      @topic.send :increment, -1
       @topic.reload
     }.should change(@topic, :post_count).by(-1)
   end

@@ -4,14 +4,14 @@ describe TopicsController do
   render_views
   
   before(:all) do
-    @category = Category.create!(:name => 'category')
-    @user = User.create!(:email => "a#{Time.now.to_i.to_s}@a.com", :name => "a", :password => "12341234", :password_confirmation => "12341234")
+    @category = create(:category)
+    @user = create(:user)
   end
   
   after(:all) do
-    Category.destroy_all
-    Topic.destroy_all
-    User.destroy_all
+    Category.delete_all
+    Topic.delete_all
+    User.delete_all
   end
   
   describe "GET index" do
